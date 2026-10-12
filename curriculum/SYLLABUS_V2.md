@@ -1,13 +1,13 @@
 # System Design Learning Lab — Syllabus V2
 
-- **Status:** Working syllabus baseline
+- **Status:** Finalized grounding baseline (living curriculum)
 - **Purpose:** Ground future System Design Learning Lab conversations, learning sessions, exercises, and progress reviews.
 - **Audience:** Software engineer targeting strong Staff/Principal-level system design capability.
 - **Learning target:** Balanced interview readiness, production architecture judgment, and technical leadership.
 - **Cloud stance:** Vendor-neutral core, with deeper Azure, AWS, and Google Cloud comparisons where implementation semantics, operations, limits, security, or cost materially differ.
 - **Companion guide:** [Detailed Playbook](../docs/LEARNING_LAB_PLAYBOOK.md)
-- **Audit rationale:** [Syllabus Audit and Research](SYLLABUS_AUDIT_AND_RESEARCH.md), if that report is added to this repository.
-- **Compatibility:** This file supplements rather than deletes or silently replaces `SYLLABUS.md`. Retain the old syllabus for comparison until separately reviewed.
+- **Audit rationale:** [Syllabus Audit and Research](../CopilotInstructions/SYLLABUS_AUDIT_AND_RESEARCH.md).
+- **Authority:** This is the canonical, detailed syllabus. `SYLLABUS.md` is the short entry point linking here; approved curriculum changes belong here.
 
 ## 1. How to use this syllabus
 
@@ -285,7 +285,10 @@ Do not add every new trend to the core. Prefer optional extensions when the comp
 - Teaching, exercise, assessment, and publishing rules: [Detailed Playbook](../docs/LEARNING_LAB_PLAYBOOK.md)
 - Exercise structure: [Design Exercise Template](../design-exercises/TEMPLATE.md)
 - Progress state: [Progress](../progress/PROGRESS.md)
-- Audit and rationale: [Syllabus Audit and Research](SYLLABUS_AUDIT_AND_RESEARCH.md), if added to this repository.
+- Audit and rationale: [Syllabus Audit and Research](../CopilotInstructions/SYLLABUS_AUDIT_AND_RESEARCH.md)
+- Concepts index: [Concepts](../concepts/README.md)
+- Research source register: [Source Register](../research/SOURCE_REGISTER.md)
+- Learning resources: [Resources](../resources/README.md)
 
 At the end of substantial sessions, record demonstrated strengths, gaps, exercises, readiness per scorecard, and the next step in the progress file. Never infer mastery from reading alone.
 

@@ -12,70 +12,19 @@ Stories can draw on Bihar/Gaya, Chhath Puja, Indian Railways/IRCTC, UPI, local b
 
 ## 2. Syllabus roadmap
 
-### Phase 0 — Orientation and fundamentals
-- Functional versus non-functional requirements
-- Latency, throughput, bandwidth, concurrency
-- Back-of-the-envelope capacity estimation
-- Availability, reliability, durability, resilience, fault tolerance
-- SLIs, SLOs, SLAs, error budgets
-- Design methodology and requirement clarification
+The detailed, canonical curriculum is [Syllabus V2](../curriculum/SYLLABUS_V2.md). It defines phase sequence, topic scope, exit evidence, cloud-comparison policy, assessment scorecards and change policy. Keep this section as a navigation summary rather than maintaining a second, divergent checklist.
 
-### Phase 1 — Core building blocks
-- DNS, HTTP, TCP, TLS, networking basics
-- APIs, REST, RPC, gateways, reverse proxies
-- Load balancing and health checks
-- Caching, TTL, eviction, invalidation, stampedes
-- Relational databases, NoSQL, indexes, transactions, query patterns
-- Queues, event streaming, background workers
-- Object storage, CDN, search, batch processing
+| Phase | Focus |
+|---|---|
+| 0 | Problem framing, NFRs, quantitative foundations, networking and reliability |
+| 1 | APIs, traffic, caching, databases, asynchronous systems, storage and compute |
+| 2 | Distributed data, consistency, consensus, correctness, partial failure and overload |
+| 3 | Applied design exercises with progressive constraints and failure labs |
+| 4 | Production reliability, security, observability, migration, multi-region, recovery and cost |
+| 5 | Staff/Principal architecture, ADRs, strategy, ownership and cross-team judgment |
+| Ongoing | Interview practice and spaced revision, assessed separately from production/Principal evidence |
 
-### Phase 2 — Distributed systems foundations
-- Vertical and horizontal scaling
-- Replication and partitioning/sharding
-- Consistent hashing and rebalancing
-- CAP theorem: assumptions, partitions, consistency and availability
-- Consistency models, read/write paths, stale reads
-- Quorums, consensus, leader election
-- Idempotency, retries, timeouts, duplicate processing
-- Distributed locks, ordering, clocks, partial failure
-- Rate limiting, backpressure, circuit breakers, overload control
-
-### Phase 3 — Practical system design
-Progress from simpler to more complex:
-- URL shortener
-- Rate limiter
-- Distributed key-value store
-- Notification service
-- File/object storage
-- News feed
-- Chat/messaging
-- Ticket booking or limited-inventory reservation
-- Payment processing and reconciliation
-- Telemetry/event ingestion
-
-Start with a simple viable system and add complexity only when requirements justify it.
-
-### Phase 4 — Advanced architecture
-- Hot keys and hotspots
-- Multi-region design and replication
-- Disaster recovery, RPO/RTO
-- Fault isolation, bulkheads, graceful degradation
-- Data migrations and backward compatibility
-- Observability, debugging and incident response
-- Security, privacy and abuse prevention
-- Cost modelling and operational complexity
-
-### Phase 5 — Staff/Principal engineering
-- Architecture reviews and design documents
-- Ambiguous/conflicting requirements
-- Evolutionary architecture and migration strategy
-- Cross-team boundaries, ownership and interfaces
-- Build-versus-buy decisions
-- Technical strategy and prioritization
-- Operational ownership, on-call impact and blast radius
-- Communicating trade-offs and resolving technical disagreement
-
-This is a roadmap, not a rigid sequence. Revisit prerequisites when needed.
+Use the syllabus change policy when new evidence, a repeated exercise gap, authoritative research or a material role constraint warrants an update. Do not add every new trend to the core by default.
 
 ## 3. Standard teaching session
 1. **Recall:** Retrieve prior learning when applicable.
@@ -163,25 +112,26 @@ Write original explanations. Do not reproduce copyrighted book passages. Cite ex
 ## 8. Markdown-first conventions
 Prefer Markdown for syllabus, progress, concept chapters, design exercises, architecture decision records, glossary, flashcards, and interview checklist. Use Mermaid diagrams where supported. Use HTML only for specific presentation or offline needs. Keep chapters modular and link related files with relative paths. Avoid duplicating long explanations; maintain one canonical chapter per concept.
 
-## 9. Suggested repository layout
-```text
-system-design-learning-lab/
-├── README.md
-├── PROJECT_INSTRUCTIONS.md
-├── docs/LEARNING_LAB_PLAYBOOK.md
-├── curriculum/SYLLABUS.md
-├── progress/PROGRESS.md
-├── progress/SESSION_LOG.md
-├── concepts/fundamentals/
-├── concepts/building-blocks/
-├── concepts/distributed-systems/
-├── design-exercises/TEMPLATE.md
-├── design-exercises/completed/
-└── revision/
-    ├── GLOSSARY.md
-    ├── FLASHCARDS.md
-    └── INTERVIEW_CHECKLIST.md
-```
+## 9. Repository layout
+
+This is the repository's current navigation convention. Add detail when a learning need warrants it.
+
+    SystemDesign/
+    ├── README.md
+    ├── CopilotInstructions/
+    │   ├── PROJECT_INSTRUCTIONS.md
+    │   └── SYLLABUS_AUDIT_AND_RESEARCH.md
+    ├── curriculum/
+    │   ├── SYLLABUS.md
+    │   └── SYLLABUS_V2.md
+    ├── docs/LEARNING_LAB_PLAYBOOK.md
+    ├── concepts/ (foundations, building-blocks, distributed-systems, production-architecture, staff-principal)
+    ├── design-exercises/ (TEMPLATE.md, cases/)
+    ├── progress/ (PROGRESS.md, SESSION_LOG.md)
+    ├── research/
+    ├── resources/
+    ├── revision/
+    └── architecture-decisions/
 
 ## 10. Progress state
 For each topic record: phase, status/readiness, what I can explain, what I can apply, misconceptions corrected, remaining gaps, exercises completed, chapter path, and next action.
