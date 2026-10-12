@@ -1,0 +1,3 @@
+# Learning Workflow
+
+Use Syllabus V2 as the curriculum, Progress as the single tracker, and Daily Log as the dated summary. Continue an already-started topic from the latest log; otherwise take the next unstarted row. A specifically requested syllabus topic can be studied out of order; add out-of-syllabus topics under Misc / Ad-hoc. Use the existing interactive concept-teaching style and informal interview-style labs. On completion, summarize the discussion in Daily Log, create the detailed topic artifact, mark the row completed, add a rating out of 5, and link the topic to its artifact folder.
