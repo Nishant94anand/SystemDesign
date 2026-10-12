@@ -1,17 +1,5 @@
-# Design Exercises
+# Design Labs
 
-Use [Syllabus V2](../curriculum/SYLLABUS_V2.md) and [TEMPLATE.md](TEMPLATE.md). Start with a simple viable design, then add constraints and failure labs. Do not reveal a full solution before the learner attempts it unless explicitly asked.
+The learning order is defined by the [Progress Topics table](../progress/PROGRESS.md). The files in `cases/` are problem prompts only, not solutions.
 
-## Exercise sequence
-1. [URL shortener](cases/url-shortener.md)
-2. [Rate limiter](cases/rate-limiter.md)
-3. [Distributed key-value store](cases/distributed-key-value-store.md)
-4. [Notification service](cases/notification-service.md)
-5. [File/object storage](cases/file-object-storage.md)
-6. [News feed](cases/news-feed.md)
-7. [Chat/messaging](cases/chat-messaging.md)
-8. [Ticket booking / limited inventory](cases/ticket-booking.md)
-9. [Payment processing and reconciliation](cases/payment-reconciliation.md)
-10. [Telemetry/event ingestion](cases/telemetry-ingestion.md)
-
-These are learner prompts, not worked solutions.
+On completion, create a topic folder under `design-exercises/` with a complete design document based on [TEMPLATE.md](TEMPLATE.md). Add diagrams, decisions, trade-offs, failure scenarios, operations, security and references as relevant. Do not create empty final-artifact folders or pre-write the design before the discussion.
