@@ -1,11 +1,11 @@
-# Concepts Knowledge Base
+# Concepts
 
-Canonical, reusable technical explanations follow [Syllabus V2](../curriculum/SYLLABUS_V2.md). Create a full chapter when a topic is studied or a repeated gap warrants it; folder indexes do not imply mastery.
+Completed conceptual topics live under the appropriate phase folder. Each completed topic gets its own folder containing one complete, readable Markdown chapter and any useful supporting assets.
 
-- [Foundations](foundations/README.md)
-- [Building blocks](building-blocks/README.md)
-- [Distributed systems](distributed-systems/README.md)
-- [Production architecture](production-architecture/README.md)
-- [Staff/Principal engineering](staff-principal/README.md)
+- [Foundations](foundations/)
+- [Building blocks](building-blocks/)
+- [Distributed systems](distributed-systems/)
+- [Production architecture](production-architecture/)
+- [Staff/Principal](staff-principal/)
 
-Use the [Playbook](../docs/LEARNING_LAB_PLAYBOOK.md) chapter standards. Link related concepts and exercises rather than duplicating long explanations.
+The [Progress table](../progress/PROGRESS.md) is the ordered roadmap and links to completed topic folders. Do not create empty topic folders or full chapters before completion.
