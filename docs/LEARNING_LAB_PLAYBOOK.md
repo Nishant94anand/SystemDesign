@@ -114,29 +114,31 @@ Prefer Markdown for syllabus, progress, concept chapters, design exercises, arch
 
 ## 9. Repository layout
 
-This is the repository's current navigation convention. Add detail when a learning need warrants it.
+Keep the workspace simple and create topic folders only when a topic is completed.
 
     SystemDesign/
     ├── README.md
-    ├── CopilotInstructions/
-    │   ├── PROJECT_INSTRUCTIONS.md
-    │   └── SYLLABUS_AUDIT_AND_RESEARCH.md
-    ├── curriculum/
-    │   ├── SYLLABUS.md
-    │   └── SYLLABUS_V2.md
+    ├── CopilotInstructions/ (PROJECT_INSTRUCTIONS.md, LEARNING_WORKFLOW.md, audit notes)
+    ├── curriculum/ (SYLLABUS.md, canonical SYLLABUS_V2.md)
+    ├── concepts/ (phase folders; topic folders created on completion)
+    ├── design-exercises/ (TEMPLATE.md; lab folders created on completion)
+    ├── progress/ (PROGRESS.md, DAILY_LOG.md)
     ├── docs/LEARNING_LAB_PLAYBOOK.md
-    ├── concepts/ (foundations, building-blocks, distributed-systems, production-architecture, staff-principal)
-    ├── design-exercises/ (TEMPLATE.md, cases/)
-    ├── progress/ (PROGRESS.md, SESSION_LOG.md)
-    ├── research/
-    ├── resources/
-    ├── revision/
-    └── architecture-decisions/
+    └── resources/ (useful references)
 
-## 10. Progress state
-For each topic record: phase, status/readiness, what I can explain, what I can apply, misconceptions corrected, remaining gaps, exercises completed, chapter path, and next action.
+Do not pre-create empty topic folders or add process files that duplicate Progress or Daily Log.
 
-At the end of substantial sessions, provide a compact progress update. When asked “Update Learning State,” return complete updated `PROGRESS.md` content. Never claim a local file, Drive, or GitHub was updated unless the operation actually succeeded.
+## 10. Progress and completion
+
+Use [Progress](../progress/PROGRESS.md) as the only tracker and [Daily Log](../progress/DAILY_LOG.md) as the only chronological summary. Progress has four columns: Phase, Topic, Status, Rating. Allowed statuses are NOT STARTED, STARTED, COMPLETED. Rating is added only at completion, and completed topic names link to their artifact folders.
+
+CONTINUE resumes the STARTED topic from its latest relevant log entry; otherwise it chooses the first NOT STARTED topic after the last COMPLETED topic. SPECIFIC TOPIC studies the requested syllabus topic without changing unrelated rows; add an out-of-syllabus topic under Misc / Ad-hoc.
+
+When a topic seems complete, ask whether the learner has more questions or wants to mark it complete. Wait for confirmation unless the learner explicitly says COMPLETE TOPIC. Then add a Daily Log summary, create the complete concept chapter or lab design, mark the topic COMPLETED, add an honest rating out of 5, and link the topic to its artifact folder. Never claim a write succeeded unless verified.
+
+## 11. Daily Log entry
+
+Use the compact dated entry template in [Daily Log](../progress/DAILY_LOG.md). Record topic/type, what was covered, key conclusions, where the discussion stopped, and the next step. Keep it concise; do not duplicate the Progress table.
 
 ## 11. Session summary template
 ```markdown
