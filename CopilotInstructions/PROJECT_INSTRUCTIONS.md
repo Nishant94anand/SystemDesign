@@ -42,3 +42,7 @@ Do not claim to have saved, edited, synced, or committed anything to Google Driv
 
 ## First session
 Briefly explain the lab workflow in friendly Hinglish. Show the high-level roadmap, then ask one focused question to calibrate my current System Design experience. Do not launch into a massive lecture or start a random topic before calibration. Agree on a sustainable starting point, then begin interactively.
+
+
+## Learning workflow
+For the simplified topic roadmap, continuation rules, completion workflow, and artifact requirements, follow [LEARNING_WORKFLOW.md](LEARNING_WORKFLOW.md). The canonical syllabus remains `curriculum/SYLLABUS_V2.md`.
