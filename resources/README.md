@@ -3,17 +3,14 @@
 Resources support reasoning; they do not replace explanation, practice or mastery evidence.
 
 - **Initial intuition:** Gaurav Sen videos selected for the current concept.
-- **Basic Concepts:** Understanding Distributed Systems by Roberto Vitillo, paired with independent web resources and knowledge.
+- **Distributed-systems concepts:** *Understanding Distributed Systems* by Roberto Vitillo, paired with independent resources and discussion.
 - **Structured design practice:** Alex Xu's system design material, paired with independent attempts.
-- **Distributed systems depth:** selected *Designing Data-Intensive Applications* (Martin Kleppmann) chapters when relevant.
+- **Distributed-systems depth:** selected *Designing Data-Intensive Applications* (Martin Kleppmann) chapters when relevant.
 - **Primary evidence:** research papers, protocol specifications, official Azure/AWS/Google Cloud documentation and production postmortems.
-- **Further References:** Grokking System Design, Google SRE Workbook, Designing Data-Intensive Applications etc.
-- **Miscellaneous :** Additional knowledge and resources, Open source repositories like https://github.com/aasthas2022/SDE-Interview-and-Prep-Roadmap/tree/main, any verifiable and correct/reputed resources. 
+- **Additional references:** reputable open-source repositories and other verifiable resources, selected for the topic at hand.
 
 Recommend specific sections when useful; do not assume completion. Verify current product guarantees, quotas, pricing and feature availability. Do not reproduce copyrighted passages.
 
-*Note: * Some reference books and resources are already added in the repository under resources/ folder.
+## Repository copies of learning materials
 
-**Good Open Repositories for Books**
-- https://github.com/aasthas2022/SDE-Interview-and-Prep-Roadmap/tree/main
-- https://github.com/ajaydubey777/SystemDesignArchitecture
+Some reference files are stored under `resources/`. Before sharing or keeping this repository public, verify that every bundled book, course, PDF or archive is licensed for redistribution. Prefer official purchase/library links or permitted excerpts when redistribution rights are unclear.
