@@ -1,6 +1,6 @@
 # Progress — System Design Learning Lab
 
-Syllabus: [Syllabus V2](../curriculum/SYLLABUS_V2.md) · [Daily Log](DAILY_LOG.md)
+Syllabus: [Syllabus V2](../curriculum/SYLLABUS_V2.md) · [Competency Matrix](../curriculum/COMPETENCY_MATRIX.md) · [Daily Log](DAILY_LOG.md)
 
 Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` until completion. On completion, rate discussion/performance out of 5 and link the topic name to its artifact folder. Do not infer progress from repository setup or reading alone.
 
