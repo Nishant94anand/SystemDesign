@@ -83,7 +83,9 @@ Ratings in this report are about the *current written syllabus*, not Nishant's d
 
 ### Follow-up decision (2026-10-13)
 
-**C15 — Multi-tenant architecture and tenant isolation: ACCEPTED.** Official Azure and AWS guidance supports treating tenant isolation as a deliberate design boundary and balancing security, performance, reliability, cost, and operational complexity. The topic is introduced in Phase 1, applied in a dedicated Phase 3 lab, and deepened in Phase 4 production concerns. The ordered Progress tracker, concept indexes, exercise catalog, revision glossary/flashcards, source register, and learning workflow have been updated to keep the change traceable. See [Syllabus V2](../curriculum/SYLLABUS_V2.md).
+**C11 — Competency-to-exercise-to-exit-evidence traceability: IMPLEMENTED.** A compact [Competency Matrix](../curriculum/COMPETENCY_MATRIX.md) maps the major competency groups to phases, practice exercises, and observable evidence without duplicating the detailed Playbook rubric.
+
+**C15 — Multi-tenant architecture and tenant isolation: ACCEPTED. Official Azure and AWS guidance supports treating tenant isolation as a deliberate design boundary and balancing security, performance, reliability, cost, and operational complexity. The topic is introduced in Phase 1, applied in a dedicated Phase 3 lab, and deepened in Phase 4 production concerns. The ordered Progress tracker, concept indexes, exercise catalog, revision glossary/flashcards, source register, and learning workflow have been updated to keep the change traceable. See [Syllabus V2](../curriculum/SYLLABUS_V2.md).
 
 Priority meanings: **P0** = foundational competency or assessment gap to resolve; **P1** = important for production/Principal readiness; **P2** = conditional, workload-specific, or specialization-dependent.
 
