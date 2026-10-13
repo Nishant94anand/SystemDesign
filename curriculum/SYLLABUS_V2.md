@@ -74,6 +74,13 @@ These are phase-level gates, not claims that one artefact proves universal compe
 - Stateless vs stateful components; vertical/horizontal scaling and capacity bottlenecks.
 - Rate limiting and admission control fundamentals; distinguish per-process from distributed enforcement.
 
+### Multi-tenant architecture
+- Define the tenant boundary for the product and distinguish tenants from individual users.
+- Compare shared/pool, dedicated/silo, and hybrid isolation models across application, data, messaging, configuration, and infrastructure layers.
+- Treat tenant isolation as a separate authorization/data-access boundary; authentication alone does not prove that cross-tenant access is prevented.
+- Reason about tenant context propagation, per-tenant quotas/rate limits, fairness, noisy-neighbor risks, resource limits, and the cost/complexity of stronger isolation.
+- Select isolation based on security, performance, reliability, compliance/data-residency needs, scale, and operational capability—not by defaulting to either fully shared or fully dedicated resources.
+
 ### Caching
 - Cache-aside and other common patterns; TTL, eviction, invalidation, freshness and stale reads.
 - Stampedes, hot keys, cache penetration, negative caching, and cache failure.
@@ -138,6 +145,7 @@ Exercises cover different competencies, not every pattern in every design. Start
 | Ticket booking / limited inventory | Concurrency, reservation expiry and invariants | Overselling, hot inventory, payment timeout, compensation |
 | Payment processing and reconciliation | Idempotency, workflow state, auditability and ambiguous outcomes | Outbox, provider disagreement, retries, reconciliation and recovery |
 | Telemetry/event ingestion | Throughput, batching, partitioning, retention and observability | Backpressure, sampling, schema evolution and cost |
+| Multi-tenant SaaS platform | Tenant boundary, isolation model, data access, quotas/fairness, tenancy-aware operations | Noisy neighbor, tenant migration, data residency, tenant-specific restore, shared-service outage |
 
 ### Required exercise workflow
 Follow the [Design Exercise Template](../design-exercises/TEMPLATE.md): scope/NFRs → estimates → APIs/workflows → data/access patterns → architecture → decisions/trade-offs → failure/overload → security/observability → operations/evolution → review/open risks.
@@ -155,9 +163,16 @@ At least some exercises should be iterative: initial design, then a new scale or
 
 ### Security and privacy
 - Threat modelling: assets, actors, trust boundaries, attack surfaces, abuse cases, and risk prioritization.
+- For multi-tenant systems, explicitly validate tenant-context propagation and cross-tenant authorization/data isolation across APIs, background jobs, caches, search indexes, logs, exports, and support/admin paths.
 - Identity/authentication, authorization, least privilege, service identities, secrets/key management, encryption and network boundaries.
 - Sensitive data classification, retention/deletion, auditability, privacy, abuse prevention, and security validation.
 - Security should influence design from the start and be revisited in each relevant exercise; this phase deepens the method.
+
+### Multi-tenant production concerns
+- Tenant-aware observability and metering: per-tenant health, latency, errors, consumption, cost, throttling, and quota alerts without unbounded metric cardinality.
+- Tenant lifecycle: onboarding/provisioning, configuration, upgrades, offboarding, data export/deletion, retention, and restore/migration procedures.
+- Control-plane versus tenant-workload/data-plane boundaries; prevent one tenant's workload or control-plane activity from exhausting shared capacity.
+- Residency, customer-managed keys, backup/restore, availability and isolation tiers where contractual or regulatory requirements demand them; compare the cost and operational burden of dedicated resources.
 
 ### Deployment, migration and compatibility
 - Safe rollout, canary/gradual deployment, health gates, rollback constraints, feature flags, and operational readiness.
@@ -178,6 +193,7 @@ At least some exercises should be iterative: initial design, then a new scale or
 - Write a staged migration/rollout plan including compatibility, validation, rollback limits, and ownership.
 - Document RPO/RTO assumptions, dependencies, recovery steps, and how a drill would prove readiness.
 - State cost assumptions and identify measurements that could change the architecture decision.
+- For a multi-tenant design, justify the isolation model and show how cross-tenant access is prevented, noisy-neighbor risk is controlled, tenant-level health/consumption is measured, and tenant lifecycle operations are performed.
 
 ## 9. Phase 5 — Staff/Principal architecture and technical leadership
 
@@ -249,7 +265,7 @@ Apply relevant parts to every substantial design:
 - Requirements, exclusions, invariants, and assumptions.
 - Workload, peak traffic, growth, capacity, tail latency, and cost.
 - Data ownership, access patterns, consistency and lifecycle.
-- Security, privacy, abuse and trust boundaries.
+- Security, privacy, abuse and trust boundaries; tenant boundaries and isolation where applicable.
 - Concurrency, retries, partial failure, overload and recovery.
 - Observability, SLOs, deployment, migration and operations.
 - Alternatives, complexity, team ownership, and what evidence would change the design.
@@ -260,6 +276,7 @@ This is a review lens, not a demand that every design use every technology or co
 
 - Use Gaurav Sen for initial intuition, Alex Xu for structured interview practice, and selective *Designing Data-Intensive Applications* (DDIA) for distributed-systems depth; do not assume any resource has been completed.
 - Prefer primary papers, official technical documentation, recognized engineering handbooks, and production postmortems for claims that need evidence.
+- For multi-tenant architecture, use provider guidance as comparative examples—not universal defaults—and validate current service guarantees, quotas, isolation properties, and limits against official documentation.
 - Cite external claims in learning chapters when appropriate. Explain the source's context and limits; do not treat a specific paper or vendor framework as a universal law.
 - Distinguish facts from assumptions, simplified models, recommendations, and unknowns.
 - Keep cloud details current at the time of study. Avoid freezing changing limits/prices into this syllabus.
