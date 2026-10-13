@@ -1,6 +1,6 @@
 # System Design Learning Lab — Syllabus Audit & Research Report
 
-- **Status:** Draft for review — no syllabus changes approved
+- **Status:** Historical audit baseline; syllabus subsequently finalized. Follow-up C15 (multi-tenant architecture) accepted and wired through the learning artifacts on 2026-10-13.
 - **Prepared:** 2026-10-12
 - **Baseline repository:** [Nishant94anand/SystemDesign](https://github.com/Nishant94anand/SystemDesign)
 - **Baseline files reviewed:** `Context/curriculum/SYLLABUS.md`, `Context/docs/LEARNING_LAB_PLAYBOOK.md`, `Context/design-exercises/TEMPLATE.md`, `Context/progress/PROGRESS.md`, `Context/PROJECT_INSTRUCTIONS.md`
@@ -80,6 +80,10 @@ Ratings in this report are about the *current written syllabus*, not Nishant's d
 | Sustainability / regulatory context | Not explicit | Not a dedicated syllabus topic | Treat as contextual review dimensions where workload, region, data classification, compliance, or business requirements make them material—not necessarily a standalone core module |
 
 ## 5. Research findings and proposed changes
+
+### Follow-up decision (2026-10-13)
+
+**C15 — Multi-tenant architecture and tenant isolation: ACCEPTED.** Official Azure and AWS guidance supports treating tenant isolation as a deliberate design boundary and balancing security, performance, reliability, cost, and operational complexity. The topic is introduced in Phase 1, applied in a dedicated Phase 3 lab, and deepened in Phase 4 production concerns. The ordered Progress tracker, concept indexes, exercise catalog, revision glossary/flashcards, source register, and learning workflow have been updated to keep the change traceable. See [Syllabus V2](../curriculum/SYLLABUS_V2.md).
 
 Priority meanings: **P0** = foundational competency or assessment gap to resolve; **P1** = important for production/Principal readiness; **P2** = conditional, workload-specific, or specialization-dependent.
 
@@ -290,4 +294,4 @@ Numerical pass thresholds should be calibrated after baseline exercises. The ini
 4. Only after approval, produce the final syllabus and any modular chapter/assessment files.
 5. Keep the existing `SYLLABUS.md` unchanged until the review is complete.
 
-**No repository files were modified as part of this audit report.**
+**Historical note:** The original audit made no repository changes. The accepted C15 follow-up above records a later implementation decision; the canonical current curriculum is `curriculum/SYLLABUS_V2.md`.
