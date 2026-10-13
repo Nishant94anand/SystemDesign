@@ -20,7 +20,6 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 1 | API contracts: REST/RPC, pagination, versioning, compatibility, auth boundaries | NOT STARTED | — |
 | 1 | Traffic management: gateways, load balancing, health checks, service discovery | NOT STARTED | — |
 | 1 | Stateless/stateful services, scaling and capacity bottlenecks | NOT STARTED | — |
-| 1 | Multi-tenant fundamentals: tenant boundaries, isolation models, quotas and noisy neighbors | NOT STARTED | — |
 | 1 | Rate limiting and admission control | NOT STARTED | — |
 | 1 | Caching patterns, TTL, eviction, invalidation, freshness and stale reads | NOT STARTED | — |
 | 1 | Cache failure modes: stampedes, hot keys, penetration, negative caching | NOT STARTED | — |
@@ -34,6 +33,7 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 1 | Idempotent consumers, deduplication, schema compatibility and transactional outbox | NOT STARTED | — |
 | 1 | Sagas, compensation and reconciliation | NOT STARTED | — |
 | 1 | Object storage, metadata, CDN, search/indexing, batch and lifecycle policies | NOT STARTED | — |
+| 1 | Multi-tenant fundamentals: tenant boundaries, isolation models, quotas and noisy neighbors | NOT STARTED | — |
 | 2 | Replication, sharding, partition keys, hotspots, skew and rebalancing | NOT STARTED | — |
 | 2 | Consistent hashing and virtual nodes | NOT STARTED | — |
 | 2 | CAP theorem and network partition scenarios | NOT STARTED | — |
