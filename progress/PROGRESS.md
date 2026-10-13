@@ -20,6 +20,7 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 1 | API contracts: REST/RPC, pagination, versioning, compatibility, auth boundaries | NOT STARTED | — |
 | 1 | Traffic management: gateways, load balancing, health checks, service discovery | NOT STARTED | — |
 | 1 | Stateless/stateful services, scaling and capacity bottlenecks | NOT STARTED | — |
+| 1 | Multi-tenant fundamentals: tenant boundaries, isolation models, quotas and noisy neighbors | NOT STARTED | — |
 | 1 | Rate limiting and admission control | NOT STARTED | — |
 | 1 | Caching patterns, TTL, eviction, invalidation, freshness and stale reads | NOT STARTED | — |
 | 1 | Cache failure modes: stampedes, hot keys, penetration, negative caching | NOT STARTED | — |
@@ -56,6 +57,7 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 3 — Labs | LAB — Ticket Booking / Limited Inventory | NOT STARTED | — |
 | 3 — Labs | LAB — Payment Processing and Reconciliation | NOT STARTED | — |
 | 3 — Labs | LAB — Telemetry/Event Ingestion | NOT STARTED | — |
+| 3 — Labs | LAB — Multi-Tenant SaaS Platform | NOT STARTED | — |
 | 4 | Reliability engineering, fault isolation, degradation and recovery | NOT STARTED | — |
 | 4 | Observability: metrics, logs, traces, dashboards, alerts, runbooks | NOT STARTED | — |
 | 4 | Incident response, post-incident learning, capacity/load testing and chaos experiments | NOT STARTED | — |
@@ -63,6 +65,7 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 4 | Threat modelling, trust boundaries, attack surfaces and risk prioritization | NOT STARTED | — |
 | 4 | Identity, authentication, authorization, least privilege, secrets, encryption and network boundaries | NOT STARTED | — |
 | 4 | Data classification, retention/deletion, auditability, privacy and abuse prevention | NOT STARTED | — |
+| 4 | Multi-tenant production operations: tenant-aware observability, lifecycle, quotas and isolation tiers | NOT STARTED | — |
 | 4 | Safe rollout, canary deployment, health gates, feature flags and rollback constraints | NOT STARTED | — |
 | 4 | Expand-contract changes, dual reads/writes, backfills, validation and deprecation | NOT STARTED | — |
 | 4 | Data migration, repartitioning, ownership transfer and staged cutover | NOT STARTED | — |
@@ -81,10 +84,15 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 5 | Technical disagreement, influence without authority and decision rationale | NOT STARTED | — |
 | 5 | Evidence-driven decisions, experiments, leading indicators and decision triggers | NOT STARTED | — |
 | 5 | Knowing when not to add abstractions, services, databases or coordination | NOT STARTED | — |
-| Ongoing | Interview practice and spaced revision | NOT STARTED | — |
-| Optional | Optional specializations from Syllabus V2 | NOT STARTED | — |
+## Recurring practice (not a sequential topic)
+
+Interview practice and spaced revision recur throughout the curriculum. Record each session and the next prompt in the [Daily Log](DAILY_LOG.md), and assess interview readiness separately from production/Principal evidence. Do not mark this recurring activity as a completed curriculum topic.
+
+## Optional specializations
+
+Optional specialization topics are listed in [Syllabus V2](../curriculum/SYLLABUS_V2.md). When one is selected, add a specific row to this table with its status and rating before studying it; do not track all optional topics as one catch-all row.
 
 ## Continue / specific-topic rules
-- **CONTINUE:** If a topic is STARTED, resume from its last relevant Daily Log entry. Otherwise start the first NOT STARTED topic after the last COMPLETED topic.
+- **CONTINUE:** If a topic is STARTED, resume from its last relevant Daily Log entry. Otherwise start the next NOT STARTED topic in the ordered table, respecting prerequisite order.
 - **SPECIFIC TOPIC:** Study that topic regardless of sequence and update only its status. If outside Syllabus V2, add it under `Misc / Ad-hoc` before studying.
 - Keep this table as the roadmap; labs are first-class rows in learning order.
