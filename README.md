@@ -6,10 +6,11 @@ A practical, interactive workspace for building Staff/Principal-level system des
 1. [Project Instructions](CopilotInstructions/PROJECT_INSTRUCTIONS.md) — persistent tutoring style.
 2. [Learning Workflow](CopilotInstructions/LEARNING_WORKFLOW.md) — continuation rules and completion workflow.
 3. [Syllabus V2](curriculum/SYLLABUS_V2.md) — canonical curriculum; the short [syllabus entry point](curriculum/SYLLABUS.md) links here.
-4. [Progress](progress/PROGRESS.md) — one ordered Topics table with phase, topic, status and rating.
-5. [Daily Log](progress/DAILY_LOG.md) — dated summaries used to resume a discussion.
-6. [Design Exercise Template](design-exercises/TEMPLATE.md) and [Exercise Cases](design-exercises/cases/README.md).
-7. [Learning Lab Playbook](docs/LEARNING_LAB_PLAYBOOK.md) — teaching, assessment and artifact conventions.
+4. [Competency Matrix](curriculum/COMPETENCY_MATRIX.md) — maps major competencies to labs and observable evidence.
+5. [Progress](progress/PROGRESS.md) — one ordered Topics table with phase, topic, status and rating.
+6. [Daily Log](progress/DAILY_LOG.md) — dated summaries used to resume a discussion.
+7. [Design Exercise Template](design-exercises/TEMPLATE.md) and [Exercise Cases](design-exercises/cases/README.md).
+8. [Learning Lab Playbook](docs/LEARNING_LAB_PLAYBOOK.md) — teaching, assessment and artifact conventions.
 
 ## Reference areas
 - [Concepts index](concepts/README.md) — canonical concept chapters, created as topics are completed.
