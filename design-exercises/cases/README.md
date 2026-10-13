@@ -12,3 +12,4 @@ These solution-free prompts are for first attempts. Copy a case into a working a
 - [Ticket booking](ticket-booking.md)
 - [Payment/reconciliation](payment-reconciliation.md)
 - [Telemetry ingestion](telemetry-ingestion.md)
+- [Multi-tenant SaaS platform](multi-tenant-saas.md)
