@@ -104,6 +104,7 @@ These are phase-level gates, not claims that one artefact proves universal compe
 - Explain why the chosen API/data/storage design fits the access pattern.
 - Analyse a cache-staleness or database-concurrency scenario.
 - Build a failure matrix for publish/consume/retry/replay where asynchronous processing is used.
+- Compare pooled, siloed and hybrid tenancy at a conceptual level; identify the tenant boundary and explain why authenticated identity alone does not guarantee cross-tenant isolation.
 
 ## 6. Phase 2 — Distributed systems and correctness
 
@@ -300,6 +301,7 @@ Do not add every new trend to the core. Prefer optional extensions when the comp
 ## 16. Companion files and progress
 
 - Teaching, exercise, assessment, and publishing rules: [Detailed Playbook](../docs/LEARNING_LAB_PLAYBOOK.md)
+- Competency-to-exercise-to-evidence traceability: [Competency Matrix](COMPETENCY_MATRIX.md)
 - Exercise structure: [Design Exercise Template](../design-exercises/TEMPLATE.md)
 - Progress state: [Progress](../progress/PROGRESS.md)
 - Audit and rationale: [Syllabus Audit and Research](../CopilotInstructions/SYLLABUS_AUDIT_AND_RESEARCH.md)
