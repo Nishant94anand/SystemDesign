@@ -140,10 +140,6 @@ When a topic seems complete, ask whether the learner has more questions or wants
 
 Use the compact dated entry template in [Daily Log](../progress/DAILY_LOG.md). Record topic/type, what was covered, key conclusions, where the discussion stopped, and the next step. Keep it concise; do not duplicate the Progress table.
 
-## 11. Daily Log entry
-
-Use the compact dated entry template in [Daily Log](../progress/DAILY_LOG.md). Record topic/type, what was covered, key conclusions, where the discussion stopped, and the next step. Keep it concise; do not duplicate the Progress table.
-
 ## 12. Resource guidance
 Use Gaurav Sen for initial intuition, Alex Xu for structured design practice, and selective *Designing Data-Intensive Applications* (DDIA) by Martin Kleppmann for deeper distributed systems understanding. Resources support reasoning; they do not replace it. Recommend specific sections when useful and do not assume completion. Use reliable sources for claims needing verification.
 
