@@ -8,8 +8,8 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 
 | Phase | Topic | Status | Rating |
 |---|---|---|---|
-| 0 | Functional requirements, user journeys, scope and non-goals | STARTED | — |
-| 0 | Non-functional requirements and measurable targets | NOT STARTED | — |
+| 0 | [Functional requirements, user journeys, scope and non-goals](../concepts/foundations/functional-requirements/) | COMPLETED | 4/5 |
+| 0 | Non-functional requirements and measurable targets | STARTED | — |
 | 0 | Requirement conflicts and prioritization | NOT STARTED | — |
 | 0 | Latency, throughput, bandwidth, concurrency and tail latency | NOT STARTED | — |
 | 0 | Back-of-the-envelope capacity estimation | NOT STARTED | — |
