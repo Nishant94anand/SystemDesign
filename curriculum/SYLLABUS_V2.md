@@ -74,13 +74,6 @@ These are phase-level gates, not claims that one artefact proves universal compe
 - Stateless vs stateful components; vertical/horizontal scaling and capacity bottlenecks.
 - Rate limiting and admission control fundamentals; distinguish per-process from distributed enforcement.
 
-### Multi-tenant architecture
-- Define the tenant boundary for the product and distinguish tenants from individual users.
-- Compare shared/pool, dedicated/silo, and hybrid isolation models across application, data, messaging, configuration, and infrastructure layers.
-- Treat tenant isolation as a separate authorization/data-access boundary; authentication alone does not prove that cross-tenant access is prevented.
-- Reason about tenant context propagation, per-tenant quotas/rate limits, fairness, noisy-neighbor risks, resource limits, and the cost/complexity of stronger isolation.
-- Select isolation based on security, performance, reliability, compliance/data-residency needs, scale, and operational capability—not by defaulting to either fully shared or fully dedicated resources.
-
 ### Caching
 - Cache-aside and other common patterns; TTL, eviction, invalidation, freshness and stale reads.
 - Stampedes, hot keys, cache penetration, negative caching, and cache failure.
@@ -98,6 +91,13 @@ These are phase-level gates, not claims that one artefact proves universal compe
 - Idempotent consumers, deduplication, schema compatibility, and transactional outbox when database state and event publication must stay coordinated.
 - Sagas/compensation and reconciliation where multi-step workflows require them; understand complexity and limits.
 - Object/blob storage, metadata, CDN, search/indexing, batch processing, and lifecycle policies.
+
+### Multi-tenant architecture
+- Define the tenant boundary for the product and distinguish tenants from individual users.
+- Compare shared/pool, dedicated/silo, and hybrid isolation models across application, data, messaging, configuration, and infrastructure layers.
+- Treat tenant isolation as a separate authorization/data-access boundary; authentication alone does not prove that cross-tenant access is prevented.
+- Reason about tenant context propagation, per-tenant quotas/rate limits, fairness, noisy-neighbor risks, resource limits, and the cost/complexity of stronger isolation.
+- Select isolation based on security, performance, reliability, compliance/data-residency needs, scale, and operational capability—not by defaulting to either fully shared or fully dedicated resources.
 
 ### Exit evidence
 - Trace a request and a data change end-to-end.
