@@ -1,3 +1,7 @@
 # Learning Workflow
 
 Use Syllabus V2 as the curriculum, Progress as the single tracker, and Daily Log as the dated summary. Continue an already-started topic from the latest log; otherwise take the next unstarted row. A specifically requested syllabus topic can be studied out of order; add out-of-syllabus topics under Misc / Ad-hoc. Use the existing interactive concept-teaching style and informal interview-style labs. On completion, summarize the discussion in Daily Log, create the detailed topic artifact, mark the row completed, add a rating out of 5, and link the topic to its artifact folder.
+
+## Repository-wide review and change control
+
+For any approved curriculum or learning-workflow change, inspect the canonical syllabus, ordered Progress table, relevant concept index, exercise prompts/template, exit evidence/scorecards, source register/resources, README navigation, and relative links. Update every affected artifact in the same change set; do not update unrelated files merely for symmetry. Keep Syllabus V2 canonical, Progress the single ordered topic tracker, and Daily Log the chronological session record. For a new topic, state its phase and prerequisites, add a specific Progress row, wire it into a relevant exercise or explicitly justify why none is needed, and record authoritative sources. Validate links and cross-file consistency after writing. Preserve the user's existing status/rating values; new topics start NOT STARTED with rating —. Do not claim a write succeeded until verified from the repository.
