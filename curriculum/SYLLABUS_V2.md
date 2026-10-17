@@ -57,7 +57,7 @@ These are phase-level gates, not claims that one artefact proves universal compe
 - Back-of-the-envelope estimation: request rates, peak/average factors, data size, retention, growth, bandwidth, utilization, and headroom.
 - Availability, reliability, durability, resilience, fault tolerance, and failure domains.
 - SLIs, SLOs, SLAs, error budgets, and user-visible reliability.
-- Basic request lifecycle and networking: DNS, HTTP, TCP, TLS, connection reuse, timeouts, and relevant protocol boundaries.
+- Basic request lifecycle and networking: DNS, HTTP, TCP, TLS, connection reuse, timeouts, and relevant protocol boundaries. Advanced protocol trade-offs belong to Phase 1.
 - Design workflow: clarify → estimate → model APIs/data → sketch architecture → analyse correctness/failures → compare alternatives → define validation.
 
 ### Exit evidence
@@ -70,6 +70,8 @@ These are phase-level gates, not claims that one artefact proves universal compe
 
 ### APIs, traffic and compute
 - API contracts, REST/RPC trade-offs, pagination, versioning, compatibility, authentication/authorization boundaries.
+- Protocol and real-time communication choices: HTTP/1.1 vs HTTP/2 vs HTTP/3 where relevant, TLS/QUIC implications, gRPC, WebSockets, server-sent events (SSE), long polling and streaming/backpressure; choose by interaction and operational requirements.
+- Identity and service trust: sessions/tokens, OAuth 2.0 and OpenID Connect at a design level, token validation and audience, service-to-service identities/mTLS and authorization boundaries. Treat authentication and tenant isolation separately.
 - DNS, reverse proxies, API gateways, load balancing, health checks, connection management, and service discovery concepts.
 - Stateless vs stateful components; vertical/horizontal scaling and capacity bottlenecks.
 - Rate limiting and admission control fundamentals; distinguish per-process from distributed enforcement.
@@ -82,12 +84,14 @@ These are phase-level gates, not claims that one artefact proves universal compe
 ### Databases and data
 - Relational and non-relational models; choose by access patterns, constraints, and query needs rather than labels.
 - Data modelling, indexes, query plans, transactions, isolation levels, and common concurrency anomalies.
+- Storage-engine mechanics at decision-making depth: B-tree vs LSM-tree access/write patterns, write-ahead logging (WAL), MVCC, compaction, crash recovery, durability/latency amplification and when implementation-specific details matter.
 - Read/write paths, connection pools, replication basics, partitioning, schema evolution, data ownership.
 - Data lifecycle: retention, deletion, backup/restore, and integrity when relevant to the workload.
 - Operational trade-offs of managed databases versus self-managed storage.
 
 ### Asynchronous systems and storage
 - Queues vs event streams, workers, batching, consumer groups, delivery semantics, retries, dead-letter/poison-message handling, replay, and ordering.
+- Stream/broker internals for relevant workloads: append-only logs, partitions, offsets/checkpoints, consumer coordination/rebalancing, lag, retention, backpressure and implications for ordering and duplicate processing.
 - Idempotent consumers, deduplication, schema compatibility, and transactional outbox when database state and event publication must stay coordinated.
 - Sagas/compensation and reconciliation where multi-step workflows require them; understand complexity and limits.
 - Object/blob storage, metadata, CDN, search/indexing, batch processing, and lifecycle policies.
@@ -105,6 +109,7 @@ These are phase-level gates, not claims that one artefact proves universal compe
 - Analyse a cache-staleness or database-concurrency scenario.
 - Build a failure matrix for publish/consume/retry/replay where asynchronous processing is used.
 - Compare pooled, siloed and hybrid tenancy at a conceptual level; identify the tenant boundary and explain why authenticated identity alone does not guarantee cross-tenant isolation.
+- Explain one protocol/connection trade-off and one token/session/service-identity trust boundary; compare B-tree/LSM and WAL/MVCC behavior in a concrete storage problem; trace offsets/rebalancing in a stream-processing failure case when applicable.
 
 ## 6. Phase 2 — Distributed systems and correctness
 
@@ -147,11 +152,12 @@ Exercises cover different competencies, not every pattern in every design. Start
 | Payment processing and reconciliation | Idempotency, workflow state, auditability and ambiguous outcomes | Outbox, provider disagreement, retries, reconciliation and recovery |
 | Telemetry/event ingestion | Throughput, batching, partitioning, retention and observability | Backpressure, sampling, schema evolution and cost |
 | Multi-tenant SaaS platform | Tenant boundary, isolation model, data access, quotas/fairness, tenancy-aware operations | Noisy neighbor, tenant migration, data residency, tenant-specific restore, shared-service outage |
+| Integrated commerce and inventory capstone | Requirements → capacity → bounded inventory → payments/reconciliation → event-driven side effects → observability and operations | Festival surge, oversell race, payment ambiguity, downstream outage, design revision and migration |
 
 ### Required exercise workflow
 Follow the [Design Exercise Template](../design-exercises/TEMPLATE.md): scope/NFRs → estimates → APIs/workflows → data/access patterns → architecture → decisions/trade-offs → failure/overload → security/observability → operations/evolution → review/open risks.
 
-At least some exercises should be iterative: initial design, then a new scale or correctness constraint, then a production incident or migration scenario. Do not provide the full solution before the learner attempts it unless explicitly requested.
+At least some exercises should be iterative: initial design, then a new scale or correctness constraint, then a production incident or migration scenario. Include an integrated [commerce capstone](../design-exercises/cases/integrated-commerce-capstone.md) after the component labs, and a separate [Principal modernization capstone](../design-exercises/cases/principal-modernization-capstone.md) during Phase 5. Assess the ability to revise designs under new constraints, not just draw a polished final diagram. Do not provide the full solution before the learner attempts it unless explicitly requested.
 
 ## 8. Phase 4 — Production architecture and evolution
 
@@ -215,6 +221,7 @@ At least some exercises should be iterative: initial design, then a new scale or
 - Produce a migration plan with milestones, owners, compatibility strategy, rollback/recovery limits, and success measures.
 - Present an architecture review that considers business value, correctness, security, reliability, cost, operations, and team boundaries.
 - Explain a technical disagreement fairly, including the strongest argument for the alternative.
+- Complete a cross-team modernization capstone: argue build-vs-buy, tenancy/security and ownership boundaries, compatibility and migration sequencing, rollout/rollback limits, cost/reliability trade-offs, incident response and measurable decision triggers. Support the recommendation with an ADR and review.
 
 ## 10. Vendor-neutral core and cloud comparisons
 
@@ -275,13 +282,14 @@ This is a review lens, not a demand that every design use every technology or co
 
 ## 14. Resource and research policy
 
-- Use Gaurav Sen for initial intuition, Alex Xu for structured interview practice, and selective *Designing Data-Intensive Applications* (DDIA) for distributed-systems depth; do not assume any resource has been completed.
+- Use the [canonical Resources catalog](../resources/README.md) rather than maintaining a second reading list here: Gaurav Sen and Jordan Has No Life **System Design 2.0** for intuition/concept deep dives; Roberto Vitillo's *Understanding Distributed Systems* for bridging theory and practice; Alex Xu Vol 1/2 and ByteByteGo for **attempt-first** case studies; selective *Designing Data-Intensive Applications* (DDIA) for data/distributed-systems depth. Use current RFCs, standards, primary papers, engineering postmortems and cloud documentation as claim-level evidence. Books/videos are optional targeted aids, not proof of competence.
 - Prefer primary papers, official technical documentation, recognized engineering handbooks, and production postmortems for claims that need evidence.
 - For multi-tenant architecture, use provider guidance as comparative examples—not universal defaults—and validate current service guarantees, quotas, isolation properties, and limits against official documentation.
 - Cite external claims in learning chapters when appropriate. Explain the source's context and limits; do not treat a specific paper or vendor framework as a universal law.
 - Distinguish facts from assumptions, simplified models, recommendations, and unknowns.
 - Keep cloud details current at the time of study. Avoid freezing changing limits/prices into this syllabus.
-- Use original explanations; do not reproduce copyrighted passages.
+- Use original explanations and diagrams; do not reproduce copyrighted passages, proprietary course graphics or PDFs without permission. Verify redistribution rights for third-party files in this public repository.
+- Concept chapters and lab documents should use purposeful **Mermaid sequence/flow/state/architecture diagrams, request/data traces, tables, carefully selected original images, explanatory flowcharts, equations and restrained emojis** where they improve understanding. Follow the [Playbook visual-assets policy](../docs/LEARNING_LAB_PLAYBOOK.md#chapter-visuals-diagrams-and-generated-assets); never replace technical explanations with decoration.
 
 ## 15. Change policy — keep the syllabus flexible
 
