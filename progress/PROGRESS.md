@@ -18,6 +18,8 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 0 | Networking/request lifecycle: DNS, HTTP, TCP, TLS, connections, timeouts | NOT STARTED | — |
 | 0 | System design workflow: clarify, estimate, model, design, validate | NOT STARTED | — |
 | 1 | API contracts: REST/RPC, pagination, versioning, compatibility, auth boundaries | NOT STARTED | — |
+| 1 | Protocol and real-time communication: HTTP/2/3, QUIC, gRPC, WebSockets, SSE, streaming | NOT STARTED | — |
+| 1 | Identity and service trust: OAuth2/OIDC, tokens, sessions, mTLS and authorization boundaries | NOT STARTED | — |
 | 1 | Traffic management: gateways, load balancing, health checks, service discovery | NOT STARTED | — |
 | 1 | Stateless/stateful services, scaling and capacity bottlenecks | NOT STARTED | — |
 | 1 | Rate limiting and admission control | NOT STARTED | — |
@@ -26,10 +28,12 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 1 | Cache consistency, memory limits, hit rate and invalidation cost | NOT STARTED | — |
 | 1 | Relational/non-relational models and access-pattern-driven choice | NOT STARTED | — |
 | 1 | Data modelling, indexes, query plans, transactions, isolation and concurrency anomalies | NOT STARTED | — |
+| 1 | Storage-engine internals: B-trees/LSM, WAL, MVCC, compaction and recovery | NOT STARTED | — |
 | 1 | Read/write paths, connection pools, replication, partitioning and schema evolution | NOT STARTED | — |
 | 1 | Data lifecycle: retention, deletion, backup, restore and integrity | NOT STARTED | — |
 | 1 | Managed databases vs self-managed storage | NOT STARTED | — |
 | 1 | Queues vs streams, workers, delivery, retries, DLQs, replay and ordering | NOT STARTED | — |
+| 1 | Broker/stream internals: partitions, offsets, consumer coordination, lag and retention | NOT STARTED | — |
 | 1 | Idempotent consumers, deduplication, schema compatibility and transactional outbox | NOT STARTED | — |
 | 1 | Sagas, compensation and reconciliation | NOT STARTED | — |
 | 1 | Object storage, metadata, CDN, search/indexing, batch and lifecycle policies | NOT STARTED | — |
@@ -58,6 +62,7 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 3 — Labs | LAB — Payment Processing and Reconciliation | NOT STARTED | — |
 | 3 — Labs | LAB — Telemetry/Event Ingestion | NOT STARTED | — |
 | 3 — Labs | LAB — Multi-Tenant SaaS Platform | NOT STARTED | — |
+| 3 — Labs | LAB — Integrated Commerce and Inventory Capstone | NOT STARTED | — |
 | 4 | Reliability engineering, fault isolation, degradation and recovery | NOT STARTED | — |
 | 4 | Observability: metrics, logs, traces, dashboards, alerts, runbooks | NOT STARTED | — |
 | 4 | Incident response, post-incident learning, capacity/load testing and chaos experiments | NOT STARTED | — |
@@ -84,6 +89,7 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 5 | Technical disagreement, influence without authority and decision rationale | NOT STARTED | — |
 | 5 | Evidence-driven decisions, experiments, leading indicators and decision triggers | NOT STARTED | — |
 | 5 | Knowing when not to add abstractions, services, databases or coordination | NOT STARTED | — |
+| 5 | PRINCIPAL CAPSTONE — Legacy SaaS Platform Modernization | NOT STARTED | — |
 ## Recurring practice (not a sequential topic)
 
 Interview practice and spaced revision recur throughout the curriculum. Record each session and the next prompt in the [Daily Log](DAILY_LOG.md), and assess interview readiness separately from production/Principal evidence. Do not mark this recurring activity as a completed curriculum topic.
@@ -99,6 +105,11 @@ Out-of-syllabus topics are tracked here separately from the ordered core curricu
 | Type | Topic | Status | Rating |
 |---|---|---|---|
 | Ad-hoc | [Symmetric and asymmetric encryption](../concepts/production-architecture/security/symmetric-asymmetric-encryption/) | COMPLETED | 3/5 |
+
+## Start / continue / completion commands
+- **START TOPIC / START CHAPTER:** On a new tracked lesson, select a requested topic or next eligible NOT STARTED row and mark STARTED; add a precise Daily Log checkpoint. Do not create empty chapter folders or assign ratings early.
+- **COMPLETE TOPIC / COMPLETE CHAPTER:** Only after explicit user instruction or confirmation; publish and verify the full artifact first, then link and rate the COMPLETED row. COMPLETED denotes the agreed discussion/artifact finished, not independently verified mastery.
+- See [Learning Workflow](../CopilotInstructions/LEARNING_WORKFLOW.md) and the [Playbook](../docs/LEARNING_LAB_PLAYBOOK.md) for exact start, publish, review and partial-failure behavior.
 
 ## Continue / specific-topic rules
 - **CONTINUE:** If a topic is STARTED, resume from its last relevant Daily Log entry. Otherwise start the next NOT STARTED topic in the ordered table, respecting prerequisite order.
