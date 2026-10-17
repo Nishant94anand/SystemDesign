@@ -13,3 +13,5 @@ These solution-free prompts are for first attempts. Copy a case into a working a
 - [Payment/reconciliation](payment-reconciliation.md)
 - [Telemetry ingestion](telemetry-ingestion.md)
 - [Multi-tenant SaaS platform](multi-tenant-saas.md)
+- [Integrated commerce and inventory capstone](integrated-commerce-capstone.md)
+- [Principal legacy SaaS modernization capstone](principal-modernization-capstone.md)
