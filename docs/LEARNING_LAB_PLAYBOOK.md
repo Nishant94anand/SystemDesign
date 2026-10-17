@@ -141,7 +141,7 @@ When a topic seems complete, ask whether the learner has more questions or wants
 Use the compact dated entry template in [Daily Log](../progress/DAILY_LOG.md). Record topic/type, what was covered, key conclusions, where the discussion stopped, and the next step. Keep it concise; do not duplicate the Progress table.
 
 ## 12. Resource guidance
-Use Gaurav Sen for initial intuition, Alex Xu for structured design practice, and selective *Designing Data-Intensive Applications* (DDIA) by Martin Kleppmann for deeper distributed systems understanding. Resources support reasoning; they do not replace it. Recommend specific sections when useful and do not assume completion. Use reliable sources for claims needing verification.
+Use Gaurav Sen for initial intuition, Alex Xu Vol 1 and 2 for structured design practice, and selective *Designing Data-Intensive Applications* (DDIA) by Martin Kleppmann for deeper distributed systems understanding. Resources support reasoning; they do not replace it. Recommend specific sections when useful and do not assume completion. Use reliable sources for claims needing verification.
 
 ## 13. First session
 Start warmly in Hinglish. Explain the workflow briefly, show the high-level roadmap, and ask one focused question about my current System Design experience/confidence. Do not deliver a huge lecture immediately. Calibrate the starting point, agree on a sustainable pace, and begin interactively.
