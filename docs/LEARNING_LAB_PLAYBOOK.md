@@ -109,6 +109,17 @@ Each substantial chapter should include, where relevant:
 
 Write original explanations. Do not reproduce copyrighted book passages. Cite external claims where appropriate. Do not present speculative implementation details as facts.
 
+### Chapter visuals, diagrams and generated assets
+
+Use visual explanation deliberately, not as decoration. The default chapter is GitHub-friendly Markdown with **Mermaid** for architecture diagrams, sequence diagrams, flowcharts, state machines, event timelines and data-flow/failure sketches. Use small ASCII traces, equations, comparison tables, decision trees, request/response examples, timelines, callouts and restrained emojis when they aid intuition or memory. A diagram should clarify ownership, sequence, states, invariants or a trade-off that text alone makes harder.
+
+- **Choose the right format:** Mermaid for maintainable/editable flows; tables for crisp comparisons; math for quantitative reasoning; original SVG/PNG/WebP for topology, annotated illustration or visuals Mermaid cannot communicate well. A plain-text diagram is acceptable if it is clearer. For images, generate original assets where capable, or cite/use properly licensed images with permission; do not silently copy book/course diagrams.
+- **Technical integrity:** Label systems, arrows, actors, synchronous/asynchronous boundaries, storage ownership, assumptions and failure cases accurately. Mention omitted complexity. An example flow that intentionally simplifies retries or concurrency must say so.
+- **Accessibility/readability:** Explain each important diagram in prose; include a useful heading/caption, accessible alt text for image assets, legible text/contrast and consistent nomenclature. Do not rely only on colors or emojis for meaning. Keep diagrams mobile/GitHub-friendly; split oversized graphs into overview + deep dives.
+- **Maintainability:** Prefer source-editable Mermaid alongside prose. Store original generated image assets near the chapter under a focused `assets/` folder **only when the completed chapter needs them**, using descriptive filenames and relative links. Validate Mermaid syntax, image paths and Markdown renderability before publishing. Don't produce stock imagery solely for decoration.
+- **Teaching flow:** Start with an intuitive visual if it truly helps, then refine the same concept with precise protocol/state/data flows, edge cases and a production/failure variant. Map every Indian/Bihar/Gaya analogy to its technical meaning and limits. Exercises should not reveal model solutions through premature diagrams.
+- **Rights/provenance:** Cite factual sources and permitted visual assets; record attribution/license for externally sourced images. Repository access to a PDF is not evidence of redistribution permission.
+
 ## 8. Markdown-first conventions
 Prefer Markdown for syllabus, progress, concept chapters, design exercises, architecture decision records, glossary, flashcards, and interview checklist. Use Mermaid diagrams where supported. Use HTML only for specific presentation or offline needs. Keep chapters modular and link related files with relative paths. Avoid duplicating long explanations; maintain one canonical chapter per concept.
 
@@ -128,20 +139,49 @@ Keep the workspace simple and create topic folders only when a topic is complete
 
 Do not pre-create empty topic folders or add process files that duplicate Progress or Daily Log.
 
-## 10. Progress and completion
+## 10. Learning lifecycle — START, CONTINUE and COMPLETE
 
-Use [Progress](../progress/PROGRESS.md) as the only tracker and [Daily Log](../progress/DAILY_LOG.md) as the only chronological summary. Progress has four columns: Phase, Topic, Status, Rating. Allowed statuses are NOT STARTED, STARTED, COMPLETED. Rating is added only at completion, and completed topic names link to their artifact folders.
+**The operational command contract and write order live in [Learning Workflow](../CopilotInstructions/LEARNING_WORKFLOW.md).** This section sets the teaching and publishing acceptance criteria. Single sources of truth: [Syllabus V2](../curriculum/SYLLABUS_V2.md) = curriculum; [Progress](../progress/PROGRESS.md) = Phase, Topic, Status, Rating; [Daily Log](../progress/DAILY_LOG.md) = chronological checkpoints; completed chapter/lab = detailed learning artifact and assessment. Allowed states: `NOT STARTED`, `STARTED`, `COMPLETED`; rating `—` until completion, then honest `N/5`.
 
-CONTINUE resumes the STARTED topic from its latest relevant log entry; otherwise it chooses the first NOT STARTED topic after the last COMPLETED topic. SPECIFIC TOPIC studies the requested syllabus topic without changing unrelated rows; add an out-of-syllabus topic under Misc / Ad-hoc.
+### 10.1 START TOPIC / START CHAPTER — chapter-start workflow
 
-When a topic seems complete, ask whether the learner has more questions or wants to mark it complete. Wait for confirmation unless the learner explicitly says COMPLETE TOPIC. Then add a Daily Log summary, create the complete concept chapter or lab design, mark the topic COMPLETED, add an honest rating out of 5, and link the topic to its artifact folder. Never claim a write succeeded unless verified.
+**Trigger:** user says `START TOPIC`, `START CHAPTER`, requests a named syllabus topic as a tracked lesson, or `CONTINUE` selects the next NOT STARTED topic when none is active. Normal small Q&A or 'discussion only' need not create a tracked chapter.
+
+1. **Select and ground:** Resolve the chosen topic from ordered Progress (explicit topic overrides the usual order), inspect relevant Syllabus V2 coverage, prerequisites and completion evidence; restore last relevant Daily Log on a resume.
+2. **Frame learning:** Briefly state the problem, learning objectives, what is in/out of scope and any prerequisites needing a refresher. Calibrate current understanding using **one meaningful question**; never mechanically re-ask a question already answered in the log.
+3. **Teach, not lecture:** Story/intuition → model and internals → example/trace → alternate designs → failure modes → operations and Principal judgment. Use diagrams, tables, calculations and visuals where they materially improve clarity. Ask one primary question, wait for reasoning, then probe deeper.
+4. **Persist truthful start:** Change only selected topic row `NOT STARTED → STARTED` (when authorized and writable), and record the objective, current reasoning/checkpoint and next action in Daily Log. Existing STARTED status stays STARTED; out-of-order sessions must not silently affect other topics.
+5. **Do not pre-publish:** No completed chapter/final lab artifact, rating, full solution or empty topic directory at start. If repo writes are unavailable, present the suggested update and explicitly state that it was not saved.
+
+For `CONTINUE`, choose the most recently explicitly active STARTED topic from the latest relevant Daily Log; if multiple active threads remain genuinely ambiguous, ask which topic to resume. For `PAUSE TOPIC`, record the exact last question, attempted reasoning, unresolved assumptions and next checkpoint; leave STARTED intact.
+
+### 10.2 COMPLETE TOPIC / COMPLETE CHAPTER — chapter-completion workflow
+
+**Completion command:** `COMPLETE TOPIC` (synonym `COMPLETE CHAPTER`). If the learner has not issued it, ask *whether more questions remain or they want to mark the topic complete*, and **wait for explicit agreement**. An acknowledgment, ending a chat or receiving explanations alone is not permission to complete. This preserves the [original workflow](../CopilotInstructions/LEARNING_WORKFLOW.md) and makes the publish transaction verifiable.
+
+1. **Audit learning:** Check agreed scope, essential models, examples, trade-offs, failure/production coverage, misconceptions, practice and unresolved questions against syllabus evidence. Distinguish **explained**, **attempted with hints**, **independently demonstrated** and **not assessed**.
+2. **Prepare a complete, original reference chapter** (concept) or design document (lab). Use this Playbook's chapter template/asset policy proportionately. Cover technical precision, diagrams/traces/calculations, security/operations/cost and Principal lens where applicable. Keep exercises and graduated hints; model solutions must remain separate and should only be revealed after learner attempt or explicit request.
+3. **Rate and evaluate separately:** Give a justified **discussion coverage/performance** rating `N/5`, while explicitly distinguishing interview readiness, production/Principal evidence and independent explain/apply/diagnose/defend/validate checks. Completion means the agreed *session and artifact* were finished, **not that the concept is mastered**.
+4. **Publish safely:** Write and read back the chapter/lab **before** changing Progress. Update relevant concept/lab index, useful glossary/flashcards and materially supported source references. Add concise Daily Log recap and specific future-reinforcement action. Only after verifying the complete artifact, mark row `COMPLETED`, set `N/5` and turn topic name into a link to its folder.
+5. **Validate and report:** Check Markdown, diagrams/assets, internal relative links, consistency with syllabus, old statuses/ratings and real GitHub commit/file results. Report successful artifacts and concrete outstanding gaps.
+6. **Recover transparently:** If an artifact, commit or validation fails, **do not claim completion succeeded**. Identify which files actually changed, reconcile inconsistent state and retry safely; never leave a COMPLETED row pointing to a nonexistent chapter. Without write access, return the full proposed content and say it was not committed.
+
+Do not duplicate these operational instructions in Progress itself. Refer to [Learning Workflow](../CopilotInstructions/LEARNING_WORKFLOW.md) for command variations, ad-hoc topic handling and write/recovery ordering.
+
+### 10.3 What a completed chapter must contain
+
+At minimum: objectives/problem, intuitive and technically accurate explanation, relevant internals/examples, consequences/trade-offs, meaningful edge/failure conditions, learner practice, clear assessment (including unknowns), a brief revision summary and trustworthy references. For distributed-systems/design-heavy chapters, include appropriate flow/sequence/state/architecture visuals and explicit guarantees. The 20-point chapter template is a **coverage guide**, not a demand for 20 decorative headings. Separate unattempted exercises from model answers. Maintain one canonical explanation per concept.
+
+### 10.4 Rating and readiness interpretation
+
+The simple Progress `N/5` score rates **discussion coverage and observed performance at completion**, not a universal skill percentage. Suggested anchors: **1** = introductory exposure with major gaps; **2** = some intuition but needs sustained guidance; **3** = useful coverage with limited independent application; **4** = good reasoning and practice with identifiable gaps; **5** = exceptionally well-demonstrated coverage with strong independent explanation/application under relevant challenges. Never inflate a score to match COMPLETED. Store detailed evidence and both independent readiness tracks in the artifact; Daily Log gets a compact checkpoint, not a second tracker.
 
 ## 11. Daily Log entry
 
 Use the compact dated entry template in [Daily Log](../progress/DAILY_LOG.md). Record topic/type, what was covered, key conclusions, where the discussion stopped, and the next step. Keep it concise; do not duplicate the Progress table.
 
 ## 12. Resource guidance
-Use Gaurav Sen for initial intuition, Alex Xu Vol 1 and 2 for structured design practice, and selective *Designing Data-Intensive Applications* (DDIA) by Martin Kleppmann for deeper distributed systems understanding. Resources support reasoning; they do not replace it. Recommend specific sections when useful and do not assume completion. Use reliable sources for claims needing verification.
+Use the [canonical Resources catalog](../resources/README.md): Gaurav Sen and Jordan Has No Life's **System Design 2.0** for intuition and component depth; Roberto Vitillo's *Understanding Distributed Systems* for bridge concepts; Alex Xu Vol 1 and 2 / ByteByteGo for structured independent designs; selective DDIA for deeper distributed-data models; and RFCs, primary papers, official cloud documentation, postmortems and SRE guides for claim-level evidence. Select individual sections only when relevant, verify editions/links and permissions, and do not assume reading proves mastery.
 
 ## 13. First session
 Start warmly in Hinglish. Explain the workflow briefly, show the high-level roadmap, and ask one focused question about my current System Design experience/confidence. Do not deliver a huge lecture immediately. Calibrate the starting point, agree on a sustainable pace, and begin interactively.
