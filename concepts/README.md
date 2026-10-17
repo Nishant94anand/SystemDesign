@@ -1,6 +1,6 @@
 # Concepts
 
-Completed conceptual topics live under the appropriate phase folder. Each completed topic gets its own folder containing one complete, readable Markdown chapter and any useful supporting assets.
+Completed conceptual topics live under the appropriate phase folder. Each completed topic gets its own folder containing one complete, readable Markdown chapter and any useful supporting assets. Use original Mermaid flows/sequence/architecture/state diagrams, optional diagrams/images, traces, tables, formulas or restrained emojis **when helpful for understanding**, following the [Playbook's assets policy](../docs/LEARNING_LAB_PLAYBOOK.md#chapter-visuals-diagrams-and-generated-assets). Don't pre-create empty folders or reuse copyrighted graphics without permission.
 
 - [Foundations](foundations/)
 - [Building blocks](building-blocks/)
