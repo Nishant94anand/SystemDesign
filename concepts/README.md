@@ -9,3 +9,6 @@ Completed conceptual topics live under the appropriate phase folder. Each comple
 - [Staff/Principal](staff-principal/)
 
 The [Progress table](../progress/PROGRESS.md) is the ordered roadmap and links to completed topic folders. Do not create empty topic folders or full chapters before completion.
+
+## Cross-cutting / Ad-hoc
+- [Symmetric and asymmetric encryption](production-architecture/security/symmetric-asymmetric-encryption/) — introductory cryptography notes; revisit with networking/TLS and chat/messaging design.

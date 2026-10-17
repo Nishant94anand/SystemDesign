@@ -1,0 +1,15 @@
+flowchart TD
+    A["Client connects to server"] --> B["Validate server certificate and hostname"]
+    B --> C["TLS handshake: authenticated key agreement"]
+    C --> D["Both sides derive symmetric traffic keys"]
+    D --> E["Application data protected with AEAD"]
+    E --> F["Ciphertext sent over network"]
+
+    subgraph KeyRoles["Distinct cryptographic roles"]
+      G["Certificate signature: helps authenticate server handshake"]
+      H["Ephemeral key agreement: establishes shared secret material"]
+      I["Symmetric AEAD: protects bulk traffic confidentiality and integrity"]
+    end
+    B -. "identity binding" .-> G
+    C -. "key establishment" .-> H
+    D -. "traffic protection" .-> I

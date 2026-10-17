@@ -92,6 +92,14 @@ Interview practice and spaced revision recur throughout the curriculum. Record e
 
 Optional specialization topics are listed in [Syllabus V2](../curriculum/SYLLABUS_V2.md). When one is selected, add a specific row to this table with its status and rating before studying it; do not track all optional topics as one catch-all row.
 
+## Misc / Ad-hoc
+
+Out-of-syllabus topics are tracked here separately from the ordered core curriculum. A completed status records that the requested session/artifact is complete; the rating reflects the discussion coverage, not proof of independent mastery.
+
+| Type | Topic | Status | Rating |
+|---|---|---|---|
+| Ad-hoc | [Symmetric and asymmetric encryption](../concepts/production-architecture/security/symmetric-asymmetric-encryption/) | COMPLETED | 3/5 |
+
 ## Continue / specific-topic rules
 - **CONTINUE:** If a topic is STARTED, resume from its last relevant Daily Log entry. Otherwise start the next NOT STARTED topic in the ordered table, respecting prerequisite order.
 - **SPECIFIC TOPIC:** Study that topic regardless of sequence and update only its status. If outside Syllabus V2, add it under `Misc / Ad-hoc` before studying.

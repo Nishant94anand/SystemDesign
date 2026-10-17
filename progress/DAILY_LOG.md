@@ -31,3 +31,22 @@ One dated section per day. Keep the summary concise and record what was covered,
   - FR artifact is complete. Open FR assumptions include exact shop hours/cutoff, delivery-serviceability rule, real product/media sizes, actual traffic and conversion patterns, and retention obligations.
   - NFR topic is partially complete and remains STARTED. Availability and read-latency targets are provisional; write-latency/peak write rate, measurement boundaries, durability/recovery scope, security/privacy, maintainability/cost, and validation of workload assumptions remain to be completed. SLIs/SLOs/SLAs/error budgets have not yet been covered.
 - Next step: Continue NFRs without selecting implementation technologies; define measurable targets and their measurement boundaries, validate assumptions, then cover requirement conflicts/prioritization and quantitative foundations in syllabus order.
+
+
+## 2026-10-18 — Symmetric and asymmetric encryption
+- Type: Ad-hoc
+- Covered:
+  - Distinguished plaintext, ciphertext, encryption, decryption, and cryptographic keys.
+  - Compared symmetric encryption (one shared secret; efficient for bulk data; key-distribution and compromise risks) with asymmetric cryptography (public/private key pair; public-key distribution; private-key protection and authenticity concerns).
+  - Introduced AES, RSA, and ECC while distinguishing encryption, key agreement (for example ECDH), and digital signatures (for example ECDSA).
+  - Walked through a simplified HTTPS/TLS flow: certificate/identity validation, ephemeral key agreement in modern TLS, derivation of symmetric traffic keys, and bulk data protection with AEAD such as AES-GCM or ChaCha20-Poly1305.
+  - Discussed why encryption alone is not the whole security story, the man-in-the-middle risk of unverified public keys, key lifecycle, and pairwise key-management growth.
+- Key conclusions / design decisions:
+  - Symmetric encryption is generally the efficient choice for bulk data; asymmetric mechanisms help establish secrets and/or authenticate parties, depending on the algorithm and protocol.
+  - Do not describe TLS 1.3 as using RSA key transport: key agreement and certificate signatures are separate roles.
+  - Added as an out-of-syllabus Ad-hoc topic, not as a change to the canonical Syllabus V2.
+  - Marked the session artifact COMPLETED at the learner's request. Rating 3/5 reflects introductory discussion coverage only; the application checkpoint was not attempted, so this is not evidence of independent mastery or interview/Principal readiness.
+- Stopped at / remaining questions:
+  - The learner acknowledged the explanation; no explain-back or scenario answer was recorded.
+  - Future reinforcement: explain why a TLS connection normally uses symmetric traffic encryption after a key-agreement handshake, and distinguish confidentiality from authentication and integrity.
+- Next step: Resume the ordered STARTED NFR topic when continuing the core curriculum; revisit this concept during the networking/TLS topic or chat/messaging design lab.
