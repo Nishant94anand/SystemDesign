@@ -12,4 +12,6 @@ This is the short entry point. The canonical curriculum and grounding baseline i
 | 5 | Staff/Principal architecture and technical leadership | Defensible decisions, ADRs, migration/ownership strategy and cross-team reasoning |
 | Ongoing | Interview practice and spaced revision | Interview readiness assessed separately from production/Principal evidence |
 
-Use [Syllabus V2](SYLLABUS_V2.md) for detailed topics, exit evidence, cloud-comparison policy, assessment scorecards and change control. Use the [Playbook](../docs/LEARNING_LAB_PLAYBOOK.md) for how to learn and publish; use [Progress](../progress/PROGRESS.md) to resume from demonstrated evidence.
+Use [Syllabus V2](SYLLABUS_V2.md) for detailed topics (including protocol choices, identity trust, storage and stream internals), integrated commerce and Principal modernization capstones, exit evidence, cloud-comparison policy, assessment scorecards and change control. Use the [Playbook](../docs/LEARNING_LAB_PLAYBOOK.md) for how to learn and publish; use [Progress](../progress/PROGRESS.md) to resume from demonstrated evidence.
+
+Resources are curated in [Learning Resources](../resources/README.md) (including Jordan Has No Life **System Design 2.0** and the newly added references). Topic-start/completion commands and visual-asset standards are defined in the [Learning Workflow](../CopilotInstructions/LEARNING_WORKFLOW.md) and [Playbook](../docs/LEARNING_LAB_PLAYBOOK.md).
