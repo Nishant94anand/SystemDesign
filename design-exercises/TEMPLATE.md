@@ -34,7 +34,7 @@ Document contracts, key request/response fields, errors, pagination/versioning, 
 Describe entities, ownership, indexes, read/write patterns, transactions and lifecycle. State invariants under concurrency, retries and partial failure.
 
 ## 6. High-level architecture
-Use Mermaid where useful. Trace a request and a data change end-to-end; mark trust boundaries, dependencies and failure domains.
+Prefer clear editable Mermaid architecture/sequence/flow/state diagrams where they add understanding; supplement with original images, equations, comparison tables, traces or restrained emojis under the [Playbook visual-assets policy](../docs/LEARNING_LAB_PLAYBOOK.md#chapter-visuals-diagrams-and-generated-assets). Explain diagrams in prose, label critical boundaries/assumptions, and validate paths and rendering. Trace a request and a data change end-to-end; mark trust boundaries, dependencies and failure domains.
 
 ## 7. Key decisions and alternatives
 For each decision: chosen approach, requirements satisfied, credible alternatives, correctness/performance implications, operational burden/cost/lock-in, assumptions that could invalidate it, and evidence that would change the choice.
@@ -68,6 +68,8 @@ Keep the core vendor-neutral. Compare Azure, AWS and Google Cloud only where sem
 - Architecture and data/API flow:
 - Correctness and failure reasoning:
 - Trade-off communication:
+- Discussion coverage rating (separate from mastery):
+- Independently demonstrated vs guided vs unassessed:
 - Interview readiness evidence:
 - Production / Principal-level evidence:
 - Remaining gaps:
