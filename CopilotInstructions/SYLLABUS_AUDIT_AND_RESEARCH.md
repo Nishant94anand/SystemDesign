@@ -297,3 +297,15 @@ Numerical pass thresholds should be calibrated after baseline exercises. The ini
 5. Keep the existing `SYLLABUS.md` unchanged until the review is complete.
 
 **Historical note:** The original audit made no repository changes. The accepted C15 follow-up above records a later implementation decision; the canonical current curriculum is `curriculum/SYLLABUS_V2.md`.
+
+## 14. Approved follow-up implemented 2026-10-18
+
+This section documents later **approved changes**, not retroactive edits to the historical 2026-10-12 findings. On user authorization, the current working documents were aligned as follows:
+
+- **Learning workflow:** canonical `START TOPIC`, `CONTINUE`, `PAUSE TOPIC`, and `COMPLETE TOPIC` triggers, user confirmation, completion artifact/assessment, safe status/link update ordering, read-back verification and partial-write recovery. See [Learning Workflow](LEARNING_WORKFLOW.md) and [Playbook](../docs/LEARNING_LAB_PLAYBOOK.md).
+- **Resource integration:** one [Resources catalog](../resources/README.md) for Gaurav Sen, Jordan Has No Life **System Design 2.0**, Roberto Vitillo, Alex Xu Vol 1/2, ByteByteGo, DDIA and selectively chosen authoritative references. Publicly bundled third-party PDFs still require an independent rights review; documentation does not imply licensing clearance.
+- **Targeted core-depth additions (without replacing the six-phase structure):** protocol/real-time communication, OAuth2/OIDC and service identity boundaries, storage-engine internals (B-tree/LSM, WAL/MVCC), broker/stream internals (offsets, coordination/rebalancing), with explicit new NOT STARTED rows in [Progress](../progress/PROGRESS.md), existing progress unchanged.
+- **Application evidence:** [Integrated commerce/inventory capstone](../design-exercises/cases/integrated-commerce-capstone.md) and [Principal legacy SaaS modernization capstone](../design-exercises/cases/principal-modernization-capstone.md) added as solution-free cases, linked from [Syllabus V2](../curriculum/SYLLABUS_V2.md) and the [Competency Matrix](../curriculum/COMPETENCY_MATRIX.md).
+- **Visual quality policy:** make relevant use of original Mermaid flow/sequence/state/architecture diagrams, images, tables, equations, traces and restrained emojis, with technical accuracy, accessible explanations, reliable relative links and asset licensing guidance in the Playbook.
+
+The syllabus remains living: new topics are not proof of mastery, not every optional resource must be consumed, and current provider claims must be researched during the actual chapter.
