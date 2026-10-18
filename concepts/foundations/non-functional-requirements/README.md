@@ -145,7 +145,7 @@ sequenceDiagram
     D-->>A: Commit acknowledged
     Note over A,U: Failure or timeout before response is delivered
     A--xU: Confirmation response not received
-    Note over U,D: Customer sees unknown outcome; committed order may exist
+    Note over U,D: Customer sees unknown outcome, but a committed order may exist
 ~~~
 
 This is a *possible failure timeline*, not a complete payment workflow or implementation blueprint. If the store crashed **before** durable commit, the order may not exist. No visible confirmation does **not** prove the order failed, and a successful payment does **not** necessarily auto-refund. Payment and order states may diverge and need later verification/reconciliation.
