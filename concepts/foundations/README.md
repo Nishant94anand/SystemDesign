@@ -5,5 +5,6 @@ Syllabus Phase 0. Suggested chapters when studied: requirements and scope; NFRs 
 ## Completed chapters
 
 - [Functional requirements, user journeys, scope and non-goals](functional-requirements/) — scenario scope, user journeys, exclusions, workload assumptions, open questions, and assessment.
+- [Non-functional requirements and measurable targets](non-functional-requirements/) — measurable quality targets, error budgets, scoped authorization, failure semantics, business trade-offs, open assumptions, and assessment.
 
 See [Syllabus V2](../../curriculum/SYLLABUS_V2.md). This index is not evidence that any topic has been completed unless the corresponding chapter and Progress entry say so.
