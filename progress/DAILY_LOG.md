@@ -50,3 +50,25 @@ One dated section per day. Keep the summary concise and record what was covered,
   - The learner acknowledged the explanation; no explain-back or scenario answer was recorded.
   - Future reinforcement: explain why a TLS connection normally uses symmetric traffic encryption after a key-agreement handshake, and distinguish confidentiality from authentication and integrity.
 - Next step: Resume the ordered STARTED NFR topic when continuing the core curriculum; revisit this concept during the networking/TLS topic or chat/messaging design lab.
+
+## 2026-10-19 — Completed non-functional requirements and measurable targets
+- Type: Concept — Phase 0
+- Covered:
+  - Completed interactive NFR discussion using the Gaya Puja Samagri web shop: measurable versus vague NFRs, performance/availability trade-offs, peak read and average order-rate assumptions, p95 and CPU/thread-pool saturation hypothesis, durability/reliability/availability, RPO/RTO, SLI/SLO/SLA/error budgets, security/privacy, permission-plus-resource-scope authorization, maintainability/operability, cost and conflicting constraints.
+  - Applied time-based 99.9% monthly SLO to 43.2 allowed unavailable minutes over 30 days; 80% spent in 10 days leaves 8.64 minutes. Clarified that request-based error budgets have request units.
+  - Discussed uncertain checkout completion: durable commit and client acknowledgement differ; gateway refunds are not automatic; safe retries of the same checkout intent and an intentional second order are distinct business outcomes.
+  - Published and verified the original [NFR chapter](../concepts/foundations/non-functional-requirements/README.md) with working requirements brief, Mermaid failure timeline, acceptance matrix, worked calculations, exercises with hints, open assumptions, references and assessment; updated [Foundations index](../concepts/foundations/README.md).
+- Learner evidence and corrections:
+  - Independent: identified durability as the primary missing-committed-order failure; selected reliability mitigation over risky releases when error budget heavily consumed; spotted security + privacy exposure; proposed manager permissions scoped to a store and global-admin override; prioritized correctness over an unvalidated 1-second checkout latency target; chose business-testable maintainability NFR over SOLID wording.
+  - Guided/explained: translating security/maintainability goals into fully testable requirements; 401 vs 403 vs 400/500; role/action/resource scoping; safe checkout retry semantics.
+  - Open misconception to revisit: initially interpreted missing acknowledgement as proof of no commit and assumed automatic gateway refund; proposed duplicate orders + customer cancellation as default. Need independent retest of ambiguous outcome and same-intent retry invariant.
+- Assessment:
+  - NFR **COMPLETED, 4/5 discussion coverage**; this does **not** imply interview or production/Principal mastery.
+  - Interview readiness: not tested with an independent timed requirements brief; Production/Principal readiness: not demonstrated. Full NFR test plan, failure-boundary sign-off and quantitative assumptions remain unassessed.
+- Open decisions:
+  - 99.9% availability, product-list p95 <=1s, order-history p95 <=3s, confirmed-order RPO=0 (single DB-server failure) and RTO<=15m are **provisional**, not agreed SLAs. Verify eligible request population, time windows, peak write RPS, data durability boundaries, incident recovery, business cancellation/refund policy, privacy retention and cost budget.
+  - Future two-store inventory authorization was a hypothetical extension; V1 remains single Gaya outlet and existing admin/inventory tool is out of scope for implementation.
+- Stopped at / remaining questions:
+  - User explicitly requested chapter completion; reference artifact is published; no additional NFR question pending.
+  - Reinforce later with an **independent** five-NFR brief, error-budget arithmetic, and post-commit lost-acknowledgement/payment reconciliation thought experiment.
+- Next step: In a new session, start the next eligible Phase 0 topic **Requirement conflicts and prioritization**; do not change its NOT STARTED status until that lesson starts.
