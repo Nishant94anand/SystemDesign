@@ -159,8 +159,9 @@ This is a *possible failure timeline*, not a complete payment workflow or implem
 - **SLO — Service Level Objective:** desired target for that indicator over a named measurement window.
 - **SLA — Service Level Agreement:** formal customer-facing agreement that may include commitments and consequences/remedies; not every internal SLO is a contractual SLA.
 
-**Memory aid:** SLI = *what we measure*; SLO = *target we aim for*; SLA = *formal agreement*. Full forms for other abbreviations appear in the [glossary](#17-glossary).
 - **Error budget:** tolerated unreliability under an SLO, in **the same units and measurement model** as the SLI.
+
+**Memory aid:** SLI = *what we measure*; SLO = *target we aim for*; SLA = *formal agreement*. Full forms for other abbreviations appear in the [glossary](#17-glossary).
 
 **Time-based availability model**, 99.9% per 30-day month:
 
