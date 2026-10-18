@@ -7,6 +7,7 @@
 - **Scenario:** Gaya Puja Samagri online shop, building on [functional requirements](../functional-requirements/)
 - **Syllabus:** [Phase 0](../../../curriculum/SYLLABUS_V2.md) · [Progress](../../../progress/PROGRESS.md) · [Daily Log](../../../progress/DAILY_LOG.md)
 - **Adjacent topics, not completed by this chapter:** [requirements conflicts](../../../progress/PROGRESS.md), quantitative latency/load, availability/reliability, dedicated SLO/error-budget treatment, and distributed retries/idempotency.
+- **Abbreviations:** See the [Glossary and abbreviation expansions](#17-glossary) for full forms (including SLI, SLO, SLA, RPO and RTO). Important terms are also expanded where they are introduced.
 
 ## 1. Learning outcomes and boundaries
 
@@ -19,7 +20,7 @@ By the end of this discussion, the learner should be able to:
 6. Defend trade-offs without assuming that faster, more redundant, or more abstract is automatically better.
 7. Identify open assumptions and measurements required before design sign-off.
 
-**Boundary:** This chapter is about **framing and measuring NFRs**, not choosing a DB, committing to replication topology, implementing idempotency, or completing later dedicated syllabus topics.
+**Boundary:** This chapter is about **framing and measuring non-functional requirements (NFRs)**, not choosing a database (DB), committing to replication topology, implementing idempotency, or completing later dedicated syllabus topics.
 
 ## 2. Why NFRs exist: Chhath shop analogy
 
@@ -57,13 +58,13 @@ Some NFRs are **numeric** (p95 under load); others are **invariants** (unauthori
 
 ## 4. Working scenario, scale and measurement boundaries
 
-V1 scope from the [FR chapter](../functional-requirements/): one Gaya outlet/shared inventory, responsive web, home delivery, catalog/cart/checkout, existing customer auth and payment/delivery integrations, online payment or COD, registered history and verified guest lookup. The existing admin/inventory management UI is **not being built in V1**. The two-store inventory example later in this chapter is a *hypothetical future extension*, not a scope change.
+V1 scope from the [functional requirements (FR) chapter](../functional-requirements/): one Gaya outlet/shared inventory, responsive web, home delivery, catalog/cart/checkout, existing customer auth and payment/delivery integrations, online payment or cash on delivery (COD), registered history and verified guest lookup. The existing admin/inventory management UI is **not being built in V1**. The two-store inventory example later in this chapter is a *hypothetical future extension*, not a scope change.
 
 ### Illustrative inputs (unverified)
 
 | Parameter | Teaching value | Interpretation |
 |---|---:|---|
-| MAU / DAU | 10,000 / 1,000 | Planning estimates, not telemetry |
+| MAU (Monthly Active Users) / DAU (Daily Active Users) | 10,000 / 1,000 | Planning estimates, not telemetry |
 | Normal / festival peak concurrency | 200 / 1,000 | 5x concurrent-user assumption |
 | Festival read activity | 3 requests/user/second | Aggressive stress-model assumption |
 | Normal / festival successful orders | 50 / 500 per day | Orders, not DB write operations |
@@ -86,7 +87,7 @@ Illustrative average **successful order rate**:
     = 0.0116 orders/second
     ≈ 1 successful order per 86.4 seconds (uniform-average assumption).
 
-That is **not** peak checkout arrival rate or DB write RPS. One checkout could trigger multiple state changes, payment callbacks and retries. Need arrival distribution, per-order operations and burst factors.
+That is **not** peak checkout arrival rate or database write requests per second (RPS). One checkout could trigger multiple state changes, payment callbacks and retries. Need arrival distribution, per-order operations and burst factors.
 
 Simplified logical data examples:
 
@@ -99,7 +100,7 @@ Do not treat these as provisioned storage or full TCO. Add variants, thumbnails,
 
 Latency is the **elapsed duration for a defined operation**. A 5-minute customer checkout journey is not the same as a 5-minute server response. Distinguish client-observed elapsed time from server-side handler time and dependency time.
 
-- **p95 latency:** 95% of the sampled eligible observations are at or below the reported value; the slowest 5% may still be substantially worse. The average alone can hide tail pain.
+- **p95 (95th-percentile) latency:** 95% of the sampled eligible observations are at or below the reported value; the slowest 5% may still be substantially worse. The average alone can hide tail pain.
 - **Throughput:** operations completed per unit time (RPS, orders/minute, bytes/sec) at an explicitly defined mix.
 - **Concurrency:** in-flight/active operations or users at a point in time.
 - **Saturation:** CPU, thread pools, queue length, connections and dependency utilization can cause nonlinear latency growth near capacity.
@@ -127,8 +128,8 @@ Avoid "95% of successful requests are fast" as the only user-experience measure 
 | **Reliability** | Does the system consistently behave according to its contract? | Duplicate charge or wrong order state |
 | **Durability** | Does durably committed data survive defined failures? | A previously committed confirmed order disappears after DB restart |
 | **Resilience** | Can service withstand/degrade/recover from disturbances within agreed limits? | Dependency overload causes cascading failures |
-| **RPO** | Maximum acceptable lost committed data measured as a recovery-point lag (defined scope) | Provisional **RPO = 0 for confirmed orders** after a single DB-server failure |
-| **RTO** | Time to restore a defined service after a specified incident | Provisional **RTO = 15 minutes**, failure and operation scope unconfirmed |
+| **RPO (Recovery Point Objective)** | Maximum acceptable lost committed data measured as a recovery-point lag (defined scope) | Provisional **RPO = 0 for confirmed orders** after a single DB-server failure |
+| **RTO (Recovery Time Objective)** | Time to restore a defined service after a specified incident | Provisional **RTO = 15 minutes**, failure and operation scope unconfirmed |
 
 **RPO=0 is not universal magic.** Define exactly when an order is accepted, which node/zone/region failures count, whether acknowledgement implies durable commit, and whether asynchronous dependencies carry separate state. RTO needs measured recovery drills and scope. Avoid claiming zero data loss across region-wide or correlated disasters without a validated design and evidence.
 
@@ -154,9 +155,11 @@ This is a *possible failure timeline*, not a complete payment workflow or implem
 
 ## 7. SLIs, SLOs, SLAs and error budgets
 
-- **SLI:** actual indicator, such as proportion of eligible checkout requests meeting a success criterion.
-- **SLO:** desired target for that indicator over a named window.
-- **SLA:** formal customer-facing commitment that may include consequences/remedies; not every internal SLO is a contractual SLA.
+- **SLI — Service Level Indicator:** actual measured indicator, such as the proportion of eligible checkout requests meeting a success criterion.
+- **SLO — Service Level Objective:** desired target for that indicator over a named measurement window.
+- **SLA — Service Level Agreement:** formal customer-facing agreement that may include commitments and consequences/remedies; not every internal SLO is a contractual SLA.
+
+**Memory aid:** SLI = *what we measure*; SLO = *target we aim for*; SLA = *formal agreement*. Full forms for other abbreviations appear in the [glossary](#17-glossary).
 - **Error budget:** tolerated unreliability under an SLO, in **the same units and measurement model** as the SLI.
 
 **Time-based availability model**, 99.9% per 30-day month:
@@ -185,7 +188,7 @@ Security is broader protection against unauthorized reading, modification or mis
 |---|---|---|
 | SEC-ORD-001 | Customer A must not read, edit, cancel or enumerate Customer B's private orders, regardless of guessed order IDs; verified guest access needs its own authorization proof | Cross-account API and guest-lookup tests; check data non-disclosure |
 | SEC-INV-001 | Only authenticated principals with **inventory.update** and relevant resource scope may change inventory; denial must leave state unchanged | API auth tests and post-state verification |
-| SEC-LOG-001 | Customer address/phone and payment secrets must not appear in ordinary application logs; authorize any exceptional access explicitly | Synthetic-PII log scanning, access reviews and sampling |
+| SEC-LOG-001 | Customer address/phone and payment secrets must not appear in ordinary application logs; authorize any exceptional access explicitly | Synthetic personally identifiable information (PII) log scanning, access reviews and sampling |
 | SEC-ABUSE-001 | Rate/attempt policies for login and guest-order lookup must be defined and enforced against a threat model, minimizing collateral customer lockouts | Negative/abuse tests, legitimate-user tests, alert review |
 
 **HTTP semantics:** missing/invalid credentials typically receive **401** (authentication required); authenticated but insufficient privilege gets **403**; **400** is malformed/invalid request; **500** is unexpected server error. A "500 Bad Request" code does not exist. UI disabled/hidden states are usability, not an authorization boundary.
@@ -194,7 +197,7 @@ Security is broader protection against unauthorized reading, modification or mis
 
 A Gaya manager with **inventory.update** scoped to **store Gaya** must not mutate Patna inventory by changing an API argument. The check is **authenticated AND has action permission AND resource belongs to authorized scope**. Backend resolves the *actual target resource* and checks its scope; do not trust a client-supplied store ID as proof. A Global Admin may have explicit cross-store authorization with appropriate audit. If a shared Product exists in multiple stores, inventory quantities often need a separate Product x Store inventory relation; this is a *possible model*, not a V1 requirement.
 
-Security requirements should state **asset, threat, allowed/forbidden behavior, verification**. Additional choices (RBAC/ABAC, encryption configuration, rate threshold) depend on risk, compliance and architecture.
+Security requirements should state **asset, threat, allowed/forbidden behavior, verification**. Additional choices (Role-Based Access Control [RBAC] / Attribute-Based Access Control [ABAC], encryption configuration, rate threshold) depend on risk, compliance and architecture.
 
 ## 9. Maintainability, operability, and cost
 
@@ -203,7 +206,7 @@ Vague: "Easy to extend." Testable proposal:
 **MAINT-001:** After agreeing on the integration scope and prerequisites, onboarding a comparable delivery provider should require no more than an agreed engineering-effort budget (illustratively five working days) and critical checkout/order regression tests must pass without unnecessary changes to core payment/order-state logic.
 
 - **Measure** elapsed team effort, files/modules touched, and regression results over actual comparable integrations.
-- **Don't confuse solution with requirement:** "Use SOLID" is a design guideline, not a sufficient business-quality target.
+- **Don't confuse solution with requirement:** "Use SOLID" (a mnemonic for five object-oriented design principles) is a design guideline, not a sufficient business-quality target.
 - **Be careful with absolutes:** some partner integrations *legitimately* require cross-cutting changes, legal reviews and security work. Agree what is included in the effort target.
 - **Operability proposal:** checkout failures are traceable using correlation IDs, service and failure categories without leaking PII or secrets; validate through an injected-failure test.
 - **Cost proposal:** establish monthly spend envelope and spending units (compute, DB/replicas, storage, images/egress, vendor charges, support/toil); set performance targets alongside the budget.
@@ -364,19 +367,36 @@ A staff member can edit Gaya stock but attempts to change Patna stock using an o
 
 ## 17. Glossary
 
-| Term | Definition |
+| Term / abbreviation | Full form / definition |
 |---|---|
+| **FR** | **Functional Requirement** — capability or behavior the system must provide |
+| **NFR** | **Non-Functional Requirement** — quality attribute or constraint governing how a capability must perform |
+| **SLI** | **Service Level Indicator** — measured service behavior |
+| **SLO** | **Service Level Objective** — target for an SLI over a stated window |
+| **SLA** | **Service Level Agreement** — formal service commitment to a customer, potentially with remedies |
+| **RPO** | **Recovery Point Objective** — maximum acceptable data-loss/recovery-point lag under a defined failure model |
+| **RTO** | **Recovery Time Objective** — maximum acceptable service restoration duration for a defined disruption |
+| **MAU / DAU** | **Monthly Active Users / Daily Active Users** — unique active users within each respective period |
+| **RPS** | **Requests Per Second** — throughput; specify eligible request types and traffic distribution |
+| **p95** | **95th percentile** — 95% of eligible observations are at or below this value |
+| **PII** | **Personally Identifiable Information** — information that can identify a person; privacy obligations may cover broader personal data too |
+| **RBAC / ABAC** | **Role-Based Access Control / Attribute-Based Access Control** — authorization models using assigned roles or evaluated attributes/policies |
+| **COD** | **Cash on Delivery** — payment method where payment is collected on delivery |
+| **API / HTTP / UI** | **Application Programming Interface / Hypertext Transfer Protocol / User Interface** |
+| **DB / CPU** | **Database / Central Processing Unit** |
+| **TCO** | **Total Cost of Ownership** — upfront, vendor/infrastructure and ongoing operating costs |
+| **WAL** | **Write-Ahead Log** — a database recovery/logging technique (detailed mechanics deferred to storage internals) |
+| **SOLID** | **Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion** — object-oriented design principles; not a measurable NFR by themselves |
+| **KB / GB** | **Kilobyte / Gigabyte** — data size units; distinguish decimal (1 GB = 10^9 bytes) and binary (1 GiB = 2^30 bytes) when capacity precision matters |
+| **ms / s / h** | **Milliseconds / seconds / hours** — latency and time units |
 | Quality attribute | Performance, security, durability, maintainability or another non-functional property |
 | Invariant | Property that must remain true across relevant operations/failures |
 | Measurement boundary | Exact start/end and inclusion rules for an observation |
-| p95 | 95th-percentile observation over a defined population/window |
-| RPS | Requests per second; specify request type and traffic distribution |
 | Error budget | Allowed failures/unavailability implied by an SLO |
 | Resource-scoped authorization | Access depends on action entitlement **and** which resource is targeted |
 | Ambiguous outcome | Caller cannot tell whether an operation committed after a timeout/lost response |
 | Idempotent retry (business intent) | Repeating the same logical attempt does not multiply business side effects |
 | Regression surface | Existing behavior potentially affected by a change |
-| TCO | Total cost of ownership, including build, cloud/vendor costs and operations |
 
 ## 18. References and next chapters
 
