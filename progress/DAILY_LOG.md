@@ -72,3 +72,10 @@ One dated section per day. Keep the summary concise and record what was covered,
   - User explicitly requested chapter completion; reference artifact is published; no additional NFR question pending.
   - Reinforce later with an **independent** five-NFR brief, error-budget arithmetic, and post-commit lost-acknowledgement/payment reconciliation thought experiment.
 - Next step: In a new session, start the next eligible Phase 0 topic **Requirement conflicts and prioritization**; do not change its NOT STARTED status until that lesson starts.
+
+### Follow-up — Requirement conflicts and prioritization (STARTED)
+- Type: Concept — Phase 0
+- Covered: Introduced the new topic after confirming that Functional Requirements and NFRs were completed. Reused the single-outlet Gaya Puja Samagri web-shop scenario; framed hard business/correctness constraints versus provisional performance and capacity assumptions.
+- Current checkpoint: Diagnostic scenario — shop owner wants V1 live within two weeks with a small fixed budget, while requesting no lost confirmed orders, product-list p95 <=1 second, and readiness for an unvalidated 3,000 read-RPS festival stress scenario. Ask which demand to challenge or renegotiate first, and what evidence to request before committing.
+- Stopped at / remaining questions: Learner has not answered this prioritization scenario yet. No solution or ranking has been supplied.
+- Next step: Evaluate learner's proposed priority and evidence; then cover hard constraints versus preferences, business impact, trade-off documentation and validation without prematurely selecting technology.
