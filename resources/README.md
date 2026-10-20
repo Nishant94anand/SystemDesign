@@ -34,8 +34,8 @@ The repository contains filenames such as `System_Design_Interview_by_Alex_Xu_Vo
 ## How tutors should use resources
 
 - Pick one primary explanation source for the present learning goal; optionally one contrast/deep-dive source. Avoid mandatory watching of multiple near-identical videos.
-- State what to read/watch and **why**, noting resource edition/section when verifiable. Don't invent chapter numbers or playlist IDs.
-- First invite the learner's reasoning. Keep solution-bearing material gated until the learner attempts the exercise or explicitly asks for the answer.
+- For a chapter's **optional deep-dive references**, choose only from this catalog, match the resource to the **specific concept** and explain **why it helps**. Prefer one primary and optionally one complementary reference; avoid mandatory reading lists. Use available official links; provide precise edition/chapter/section/video title only after verification, otherwise describe the relevant topic without invented page numbers or playlist IDs.
+- **Teach the relevant concept and show a concrete example first**, then invite the learner to reason through one meaningful question. Repeat small explanation → example → learner attempt → feedback cycles; do not expect them to invent unfamiliar concepts. Keep full solution-bearing material gated during interactive learning until an attempt or explicit request; publish a separate complete model-answer section at authorized chapter completion per the Workflow/Playbook.
 - Attribute research claims to the original technical paper, standard or official docs when possible rather than citing an interview summary as primary evidence.
 - Compare service **guarantees** and costs, not just service names; validate volatile prices/quotas near the study date.
 - Mark illustrative simplifications, unknowns, conflicting sources and historical designs. Use original explanations and diagrams.
