@@ -3,7 +3,7 @@
 - **Status:** Completed (learning discussion and reference artifact; not mastery)
 - **Phase:** 0 — Foundations and problem framing
 - **Last updated:** 2026-10-21
-- **Discussion-coverage assessment:** **4/5** (see [evidence and gaps](#14-learning-evidence-and-assessment))
+- **Discussion-coverage assessment:** **4/5** (see [evidence and gaps](#15-learning-evidence-and-assessment))
 - **Case study:** Single-outlet Gaya Puja Samagri customer-facing web shop, with a Chhath festival demand spike
 - **Prerequisites:** [Functional requirements](../functional-requirements/README.md) · [Non-functional requirements](../non-functional-requirements/README.md)
 - **Curriculum:** [Syllabus V2](../../../curriculum/SYLLABUS_V2.md) · [Learning workflow](../../../CopilotInstructions/LEARNING_WORKFLOW.md) · [Daily Log](../../../progress/DAILY_LOG.md)
@@ -288,7 +288,7 @@ This last column is **review feedback**, not part of the learner's independent r
 - What evidence/threshold would force us to change admission, grace, inventory or budget policy?
 - Is customer agreement documented, or are we unintentionally turning an engineering hypothesis into a contract?
 
-## 11. Practice and graduated hints (unattempted unless explicitly marked)
+## 11. Practice and graduated hints (answer key in Section 13)
 
 **P1 — Independent negotiation:** A small regional store insists on 99.99% order availability and no increased cost. Offer two bounded alternatives, their user-visible consequences, and one piece of evidence that could change the choice.
 
@@ -310,7 +310,7 @@ This last column is **review feedback**, not part of the learner's independent r
 <details><summary>Hint 1</summary>Use "must protect", "proposed SLO", "best effort" and "unverified assumption" labels.</details>
 <details><summary>Hint 2</summary>Convert "too many failures" into a threshold, denominator, window, and responsible action.</details>
 
-**Answer policy:** These additional problems are **not attempted** in the recorded session, so no model solution is published. The learner's *already attempted* memo and separate review are preserved in [Section 8](#8-decision-matrix-and-a-sample-engineering-recommendation).
+**Answer key:** P1–P4 were **not attempted** during our interactive lesson. Their full, separately labelled model solutions appear in [Section 13](#13-model-answers-and-worked-solutions), together with model responses for the attempted scenario and revision questions. Read those **after** trying each problem. Model-only material is never counted as learner evidence; the independent attempt is preserved in [Section 8](#8-decision-matrix-and-a-sample-engineering-recommendation).
 
 ## 12. Revision prompts and interview rehearsal
 
@@ -323,9 +323,120 @@ Try without notes, then revisit in 2–3 days and again after 1–2 weeks:
 - Defend a bounded-inventory fairness policy for a festival peak, then reverse it if customer abandonment doubles.
 - Write a single measurable trigger for revisiting the rejection and pending-order policy.
 
-**Interview prompt:** "Your owner demands zero rejected orders, zero overselling, a five-minute resolution and a fixed launch budget; what do you do?" Model **reasoning structure only** (the user already attempted this specific scenario): establish infeasibility/conditions; preserve correctness and security; prioritize customer outcome; propose bounded alternatives; state assumptions and evidence; negotiate explicit exception semantics; log responsible owner and revisit condition. This is not a reusable memorized answer.
+**Interview prompt:** "Your owner demands zero rejected orders, zero overselling, a five-minute resolution and a fixed launch budget; what do you do?" See the worked memo in [Section 13](#13-model-answers-and-worked-solutions). Model **reasoning structure** (the user already attempted this specific scenario): establish infeasibility/conditions; preserve correctness and security; prioritize customer outcome; propose bounded alternatives; state assumptions and evidence; negotiate explicit exception semantics; log responsible owner and revisit condition. This is not a reusable memorized answer.
 
-## 13. Quick revision and glossary
+## 13. Model answers and worked solutions
+
+> **Reference solutions, not achievement evidence.** These include the previously **unattempted** P1–P4 problems as well as model responses to earlier interactive checkpoints, the learner's **attempted** independent ADR and the revision questions. Open-ended design decisions do not have a single universally correct answer. Each reference response states assumptions, defensible policy, failure behavior and trade-offs. **Do not attribute these new solutions to the learner.**
+
+### A. Worked solutions for unattempted P1–P4
+
+#### P1 — 99.99% availability under a fixed budget
+
+**First clarify what "availability" means.** A reachable checkout service is not a guarantee that Puja Kits are physically in stock. Specify eligible endpoint/journey, user population, measurement window, exclusions, peak workload and financial impact.
+
+For **time-based availability in an illustrative 30-day month**:
+- Total minutes = 30 × 24 × 60 = **43,200 minutes**.
+- 99.99% availability allows 43,200 × (1 − 0.9999) = **4.32 minutes** unavailable.
+- 99.9% availability allows 43,200 × (1 − 0.999) = **43.2 minutes** unavailable.
+- A **request-based** SLO uses a request count, not these time budgets.
+
+**Option A — preserve 99.99% as a conditional goal while investigating low-cost mitigations.** Validate incident causes, dependencies, deployment risk, failed health checks, recovery paths and monitoring. Improve release discipline and operational response where feasible **within the agreed budget**; do not guarantee a number without evidence. Downside: residual upstream/third-party or correlated outages could still violate the target.
+
+**Option B — negotiate a more achievable target and concentrate budget on payment/order correctness.** For example, discuss a **provisional** 99.9% target plus transparent customer communication during unavailable windows. Downside: potentially more checkout downtime and lost customers; this needs business acceptance, not unilateral engineering decision.
+
+**What changes the choice?** Representative incident/fault-injection evidence, cost per lost checkout, dependency outages, observed peak demand and incremental mitigation cost. **If neither option is feasible**, escalate scope, timing, money or contract; no amount of prioritization makes contradictions disappear.
+
+#### P2 — Overload calculation
+
+Assumptions: starting backlog 0, incoming rate **150 checkout attempts/minute**, sustainable completions **110 attempts/minute**, both constant, no abandonment, dropping or other bottleneck change.
+
+Net backlog growth = 150 − 110 = **40 attempts/minute**.
+
+| Elapsed | Backlog calculation | Queued attempts |
+|---|---|---:|
+| 3 minutes | 40 × 3 | **120** |
+| 15 minutes | 40 × 15 | **600** |
+
+**Does async acceptance solve it? No.** It may acknowledge quickly and avoid asking users to keep a browser open, but the worker still completes only 110 attempts/minute. With sustained excess arrivals, pending work increases; a bounded queue, admission limit, demand reduction, measured capacity improvement or business-policy change is required. The assumed backlog grows **linearly**, not exponentially. Real queues also experience variable arrival and processing times, which affect tail latency.
+
+#### P3 — Shared last kit, delayed gateway, cross-device retry
+
+**Three invariants:**
+1. **No double allocation:** The same final inventory unit cannot satisfy two confirmed purchases across the store counter and web app. This requires a trustworthy shared inventory contract; if offline updates are invisible, the invariant cannot be promised without addressing that boundary.
+2. **Same-intent idempotence:** Repeating one logical purchase attempt, including from another device after a lost response, must not produce a new order or unintended charge. Deliberately creating a second order is different.
+3. **Money accountability:** Every discovered successful payment either belongs to a valid order or creates a durably tracked reconciliation/refund obligation.
+
+**Two customer-visible states:** **Pending Reconciliation** when provider or order outcome is unverified; **Rejected — Refund Processing** only after confirming that fulfillment cannot proceed *and* payment succeeded. If payment success is unknown, never misleadingly mark a refund as already initiated.
+
+**Acceptance tests:** concurrent web + counter attempts for one unit; successful commit with lost client acknowledgement followed by a same-intent retry; timeout then late gateway success after hold expiry; repeated gateway callbacks; failed/retried refund initiation; guest attempting to access another customer's status without proof. Check invariant preservation, accurate status, and final discoverability. Database locking, request identifiers and payment integration are *design* details, not assumptions to sneak into the requirement.
+
+#### P4 — Full reference Engineering Decision Record (ADR)
+
+**Title:** Chhath launch — reliable checkout within finite budget.  
+**Status:** *Proposed example; business sign-off pending.*  
+**Business constraints:** Fixed launch before Chhath; fixed engineering cost envelope; one shared physical/online inventory. Festival read peak (3,000 RPS) and checkout-write demand are not yet validated.
+
+**Hard invariants:** No confirmed overselling within the agreed cross-channel stock boundary; no false confirmation; no unintended duplicate order/charge for the same intent; every captured-but-unfulfilled payment is tracked to refund/reconciliation; private order status requires authorized lookup.
+
+**Proposed target:** At least **95% of eligible durably accepted online purchase intents** reach terminal **Confirmed / Rejected / Cancelled** within **five minutes from durable acceptance**, measured over agreed peak **15-minute windows**. This is illustrative—not an approved SLA. **Pending Reconciliation is not terminal** and counts as a miss for that specific target, though it may be the only truthful display state. Define cash-on-delivery semantics separately. Measure checkout *admission waiting time* separately from *order resolution time*.
+
+**Recommended business policy:** Prefer bounded checkout admission **before taking payment** during overload; tell users when checkout is delayed or unavailable. A queue admission ticket does **not** guarantee stock. Consider short, explicit stock holds at active checkout only if the store's shared inventory source can honor them. An unresolved gateway outcome needs an accurate pending state and operational reconciliation; do not use fabricated rejection to achieve the target.
+
+**Alternatives rejected/deferred:**
+- **Accept everything in an unbounded async queue:** Fast acknowledgment but growing pending workload, stock uncertainty and potential customer harm if demand permanently exceeds capacity.
+- **Immediately add application servers:** Requires budget approval and only helps if the measured bottleneck is scalable app capacity, not a stock-integrity or payment-provider limit.
+- **Guarantee zero rejection and eventual confirmation:** Unsupported without sufficient sellable inventory and fulfillment guarantees.
+
+**Risks, actions and owners:**
+- Sustained overload → bounded admission, clear wait/denial messaging; engineering + product.
+- Physical shop/web inventory discrepancy → stop unsafe confirmations, reconcile sellable stock; inventory operations.
+- Payment succeeds after hold expires → no false order confirmation, verified refund obligation; payment operations/support.
+- Waiting-room abandonment → measure lost conversion and revisit policy; product owner.
+- Data leakage through guest status lookup → verified identity/authorization tests; security + engineering.
+
+**Review criteria — sample thresholds, to be agreed with the business:**
+- **Any confirmed double allocation** → immediate incident; investigate across web and offline stock.
+- **Terminal-decision SLO below 95% for two consecutive representative 15-minute peak windows** → engineering/product review; isolate gateway vs processing vs stock cause.
+- **More than 1% overload admission denials** among checkout-admission attempts for three peak windows → reconsider load control/capacity/scope. Exclude actual inventory stockouts from the *overload* numerator.
+- **Any successful payment without linked order or refund obligation** → incident and reconciliation until resolved, not a tolerated error budget.
+- Record stockout rate, backlog age, admission wait percentiles, payment success/result-notification latencies, refund settlement delay and cost per successful purchase.
+
+**Decision reversal:** Re-evaluate if real festival traffic is materially different, delay/abandonment increases beyond approved thresholds, provider behavior changes, or physical stock synchronization is weaker than assumed. Sponsor signs customer-visible exception policy; engineering validates and owns the mechanism.
+
+### B. Already attempted main case — learner response vs model
+
+**Actual learner proposal:** Hard = no overselling; negotiable = five-minute resolution; optimize/minimize rejection. Reasoning: customer trust and correctness, five-minute speed matters but external conditions prevent an absolute rejection guarantee. Risks: rejection and long resolution. Revisit: "too many" rejections or "exponentially long" waiting.
+
+**Model answer:** In addition to the above, explicitly list the **fixed deadline and budget** as business constraints; protect money reconciliation and authorization; define eligible purchase population, time origin, window and percentiles for resolution; distinguish overload rejection from stockout; identify customer-visible pending/rejected/refunded states and operational owners; compare bounded admission and unbounded async acceptance; state numeric, revisitable loss thresholds. In the constant-rate example, backlog grows **linearly by 40/minute**, not exponentially. This improved answer is a *model/reference*, not an independent user response.
+
+### C. Model answers to prior interactive checkpoints
+
+| Checkpoint | Defensible model response and key limitation |
+|---|---|
+| Challenge 1s latency / 3,000 read RPS | Ask for conversion/UX impact of slower product reads, latency measurement boundary and festival forecast; label 3,000 RPS as **unvalidated stress**, not evidence. A 2s target does not imply half the servers. |
+| Fixed budget + overload | Protect checkout integrity; negotiate peak admission delays/denials and test capacity before adding features. Async acknowledgements only move waiting; they do not raise throughput. |
+| Checkout admission and inventory | Prefer not to reserve scarce stock on mere waiting-room entry without evidence; FIFO **admission** does not grant FIFO **inventory ownership**. |
+| Order received vs confirmed | Accepted for processing means durable intent, not guaranteed stock/payment/fulfillment. No false final state; allow truthful Pending Reconciliation. |
+| Inventory reservation expiry | Time-bound reservation with explicit expiry and revalidation; no indefinite stock blocking for abandoned customers. |
+| Payment after expiry; strict vs grace | Both can preserve correctness if stock allocation remains safe. Limited grace may reduce refunds at cost of blocking stock; **no finite grace guarantees external payment-result arrival**. |
+| Payment success, order rejected | Keep order/payment/refund statuses separate; if money captured but no valid order, track refund initiation through settlement, with operational owner. |
+| 100 incoming orders/min, 60 completed/min | After 5 minutes 200 pending; after 20 minutes 800 pending, assuming constant rates and no abandonment/shedding. Queueing cannot erase 40/min capacity deficit. |
+| Zero rejection vs five-minute final decision | With scarce/uncertain stock, unconditional zero rejection implies potentially indefinite pending, contrary to time-sensitive customer needs. Negotiate a bounded policy and truthful exception status. |
+| Strict customer SLA vs gateway uncertainty | If the provider response is unresolved after five minutes, the order can remain **Pending Reconciliation** truthfully—but this **misses** a five-minute *terminal* resolution objective. Explicitly agree exceptions or revise promise; never mark a false result. |
+
+### D. Model answers to revision prompts (Section 12)
+
+1. **Invariant vs deadline vs SLO:** No double allocation is a scoped correctness invariant; "launch before Chhath" is a business deadline; "95% of eligible orders resolve in five minutes in window X" is a measurable objective. They belong to different categories.
+2. **Why 30-second grace does not guarantee success:** The external provider may return after 31 seconds or not respond. Timeouts influence probability and stock utilization, not correctness certainty.
+3. **Request received, payment success, confirmed:** Receiving a request does not imply durable acceptance; payment succeeded does not guarantee stock; confirmed order requires committed business validations. Payment success with rejected order requires tracked refund.
+4. **Data for listing API 1s vs 2s p95:** User/network/server boundary, peak RPS/read mix, p95/p99 distribution, success denominator, abandonment or conversion, bottleneck and incremental capacity cost. Detailed architecture impact belongs to the latency and design chapters.
+5. **Fairness if abandonment doubles:** Consider reducing abandoned holds and tightening bounded checkout windows while retaining clear FIFO admission; monitor stockouts, conversion and late-payment refunds. This is conditional on evidence, not automatic policy reversal.
+6. **Measurable revisit trigger:** Example: "If overload-caused checkout admission denials exceed 1% of eligible admission attempts during each of three successive 15-minute peak windows, product and engineering jointly review capacity, admission policy and customer communication." The threshold is illustrative, not approved.
+
+**Revision method:** Hide this section, solve first, then compare. Reading or copying any model answer does **not** improve the learner's independent-evidence rating.
+
+## 14. Quick revision and glossary
 
 **Five principles:**
 
@@ -350,7 +461,7 @@ Try without notes, then revisit in 2–3 days and again after 1–2 weeks:
 - **Tail latency:** Slow end of the latency distribution, often relevant for customer-visible deadlines.
 - **RPS:** Requests per second; read RPS and order-commit rate are not interchangeable.
 
-## 14. Learning evidence and assessment
+## 15. Learning evidence and assessment
 
 **Discussion coverage: 4/5** — strong interactive coverage and independent prioritization attempt; not a certification of design mastery.
 
@@ -368,7 +479,7 @@ Try without notes, then revisit in 2–3 days and again after 1–2 weeks:
 - **Important separation:** Finishing this chapter records agreed discussion coverage and a reference artifact; it does **not** imply independent mastery or that its illustrative business rules were approved.
 - **Next reinforcement:** Re-attempt P4 under changed stock/payment/provider conditions, explicitly supply denominator, target percentile, window, exception policy, owner and reversal trigger. Pair with capacity/latency exercises.
 
-## 15. Open decisions and constraints
+## 16. Open decisions and constraints
 
 - Validate Chhath launch timing, calendar deadlines, fixed budget magnitude and non-negotiable V1 scope.
 - Obtain forecast of peak checkout writes vs catalog reads; traffic, conversion and in-store inventory change patterns; load-test with representative request mix.
@@ -379,7 +490,7 @@ Try without notes, then revisit in 2–3 days and again after 1–2 weeks:
 - Validate that added complexity (waiting room, callback handling, grace, queue) has positive marginal business benefit given team size and fixed launch date.
 - Later chapters supply algorithms, API semantics, database concurrency, exact capacity models, payment race proofs and threat-model validation.
 
-## 16. References and related study
+## 17. References and related study
 
 **Project references (authoritative for this learning record):**
 
