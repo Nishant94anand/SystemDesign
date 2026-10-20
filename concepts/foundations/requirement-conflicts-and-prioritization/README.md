@@ -310,7 +310,7 @@ This last column is **review feedback**, not part of the learner's independent r
 <details><summary>Hint 1</summary>Use "must protect", "proposed SLO", "best effort" and "unverified assumption" labels.</details>
 <details><summary>Hint 2</summary>Convert "too many failures" into a threshold, denominator, window, and responsible action.</details>
 
-**Answer policy:** These additional problems are **not attempted** in the recorded session, so no model solution is published. The learner's *already attempted* memo and separate review are preserved in [`8](#8-decision-matrix-and-a-sample-engineering-recommendation).
+**Answer policy:** These additional problems are **not attempted** in the recorded session, so no model solution is published. The learner's *already attempted* memo and separate review are preserved in [Section 8](#8-decision-matrix-and-a-sample-engineering-recommendation).
 
 ## 12. Revision prompts and interview rehearsal
 
