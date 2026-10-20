@@ -103,3 +103,10 @@ One dated section per day. Keep the summary concise and record what was covered,
 - Requested: Teach a short concept and concrete example before posing one progressive interactive question, then evaluate/reteach/extend rather than running question-only hypothetical sequences. Use topic-matched optional deep-dive references from the canonical `resources/README.md` in relevant final chapters, with a reason and verified links/sections only.
 - Applied: Updated Project Instructions, Learning Workflow, Learning Lab Playbook, and Resources catalog guidance; preserved attempt-first live learning and separate complete model solutions in authorized completed chapters.
 - Next step: Continue Phase 0 with latency, throughput, bandwidth, concurrency and tail latency when requested; use incremental teach → demonstrate → ask → review loops.
+
+## 2026-10-21 — Started latency, throughput, bandwidth, concurrency and tail latency
+- Type: Concept — Phase 0
+- Objective: Build precise performance mental models (per-request latency, throughput, bytes/sec, in-flight concurrency), then explore percentiles/tail latency, bottlenecks, Little's Law, saturation and production implications through the Gaya Puja Samagri shop.
+- Covered: Opened next ordered NOT STARTED topic after requirement prioritization. Introduced core metrics with a short request-flow example.
+- Current checkpoint: First diagnostic — for 100 requests/sec with an average 200 ms in-flight time, estimate average concurrent requests and explain the intuition (stable system assumptions).
+- Next step: Review learner's attempt, distinguish Little's Law from capacity guarantees, then extend into tail latency and overload.
