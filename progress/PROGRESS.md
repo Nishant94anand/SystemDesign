@@ -10,7 +10,7 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 |---|---|---|---|
 | 0 | [Functional requirements, user journeys, scope and non-goals](../concepts/foundations/functional-requirements/) | COMPLETED | 4/5 |
 | 0 | [Non-functional requirements and measurable targets](../concepts/foundations/non-functional-requirements/) | COMPLETED | 4/5 |
-| 0 | Requirement conflicts and prioritization | STARTED | — |
+| 0 | [Requirement conflicts and prioritization](../concepts/foundations/requirement-conflicts-and-prioritization/) | COMPLETED | 4/5 |
 | 0 | Latency, throughput, bandwidth, concurrency and tail latency | NOT STARTED | — |
 | 0 | Back-of-the-envelope capacity estimation | NOT STARTED | — |
 | 0 | Availability, reliability, durability, resilience and fault domains | NOT STARTED | — |
