@@ -188,7 +188,7 @@ sequenceDiagram
     P-->>S: Success reported at 10:05:08
     Note over S,P: External completion time may differ from callback receipt
     S-->>C: Truthful order/payment state
-    Note over S,I: If stock already released, never over-confirm; reconcile/refund
+    Note over S,I: Stock released - do not confirm and reconcile payment
 ~~~
 
 *Figure 2 — Simplified, conceptual message ordering. Real implementation must coordinate concurrent expiry, payment, allocation and retries; diagram does not prove atomicity or mandate a specific protocol.*
