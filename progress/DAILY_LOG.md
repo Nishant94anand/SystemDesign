@@ -97,3 +97,9 @@ One dated section per day. Keep the summary concise and record what was covered,
 - Future policy: Updated Project Instructions, Learning Workflow and Learning Lab Playbook to require complete separate worked model answers at explicit chapter completion while keeping interactive sessions attempt-first.
 - Assessment unchanged: Requirement Conflicts and Prioritization remains COMPLETED at 4/5 discussion coverage; no additional independent mastery demonstrated by publishing reference answers.
 - Next: Start Latency, throughput, bandwidth, concurrency and tail latency when user requests. Optionally map Roberto Vitillo 2nd-edition gaps (e.g., CRDT/CALM, control/data-plane separation) to syllabus explicitly before claiming book-complete coverage.
+
+## 2026-10-21 — Refined tutoring workflow and resource attribution
+- Type: Learning workflow refinement; no topic status/rating change.
+- Requested: Teach a short concept and concrete example before posing one progressive interactive question, then evaluate/reteach/extend rather than running question-only hypothetical sequences. Use topic-matched optional deep-dive references from the canonical `resources/README.md` in relevant final chapters, with a reason and verified links/sections only.
+- Applied: Updated Project Instructions, Learning Workflow, Learning Lab Playbook, and Resources catalog guidance; preserved attempt-first live learning and separate complete model solutions in authorized completed chapters.
+- Next step: Continue Phase 0 with latency, throughput, bandwidth, concurrency and tail latency when requested; use incremental teach → demonstrate → ask → review loops.
