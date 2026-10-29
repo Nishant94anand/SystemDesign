@@ -7,5 +7,6 @@ Syllabus Phase 0. Suggested chapters when studied: requirements and scope; NFRs 
 - [Functional requirements, user journeys, scope and non-goals](functional-requirements/) — scenario scope, user journeys, exclusions, workload assumptions, open questions, and assessment.
 - [Non-functional requirements and measurable targets](non-functional-requirements/) — measurable quality targets, error budgets, scoped authorization, failure semantics, business trade-offs, open assumptions, and assessment.
 - [Requirement conflicts and prioritization](requirement-conflicts-and-prioritization/) — hard constraints versus targets, evidence-based negotiation, festival checkout fairness and overload trade-offs, payment uncertainty, decision memo and assessment.
+- [Latency, throughput, bandwidth, concurrency and tail latency](latency-throughput-bandwidth-concurrency-tail-latency/) — Little's Law, queue saturation, payload bandwidth, tail amplification, critical-path isolation, DB pool diagnosis, worked exercises and assessment.
 
 See [Syllabus V2](../../curriculum/SYLLABUS_V2.md). This index is not evidence that any topic has been completed unless the corresponding chapter and Progress entry say so.
