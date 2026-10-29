@@ -120,3 +120,10 @@ One dated section per day. Keep the summary concise and record what was covered,
 - Assessment: **COMPLETED, 4/5 discussion coverage**, not independent mastery. Interview readiness: unseen timed scenario not assessed. Production/Principal readiness: real tracing, load-test, rollback and SLO sign-off not demonstrated.
 - Stopped at: User requested publication after answering final DB-pool judgment. No remaining Chapter 4 live question. Open reinforcement: percentile vs mean boundaries, throughput vs concurrency/time-window consistency, M/M/1 ρ vs CPU, overload containment vs long-term fix.
 - Next step: Begin next eligible **Back-of-the-envelope capacity estimation** topic as NOT STARTED when asked. Revisit P4/P5 and an independent overload case at spaced revision; use the same Gaya shop with explicit traffic and network assumptions.
+
+## 2026-10-29 — Started Chapter 5: Back-of-the-envelope capacity estimation
+- Type: Concept — Phase 0; user requested Chapter 5.
+- Prerequisite: Chapter 4 latency/throughput/bandwidth/concurrency completed at 4/5 discussion coverage; avoid treating as proven mastery.
+- Objective: Estimate average/peak requests, storage, bandwidth, retention, growth, utilization and headroom with explicit assumptions; challenge sensitivity of uncertain numbers.
+- Initial checkpoint: Gaya Puja Samagri shop, 100,000 daily product-list API requests with a festival peak factor of 10; estimate average RPS and peak RPS, showing units and assumptions. Await learner attempt.
+- Next: Review math, discuss how daily-average and 10x peak assumptions can mislead, extend to request mix, storage, bandwidth, capacity headroom and costs.
