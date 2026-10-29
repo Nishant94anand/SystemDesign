@@ -12,7 +12,7 @@ Allowed statuses: `NOT STARTED`, `STARTED`, `COMPLETED`. Rating stays `—` unti
 | 0 | [Non-functional requirements and measurable targets](../concepts/foundations/non-functional-requirements/) | COMPLETED | 4/5 |
 | 0 | [Requirement conflicts and prioritization](../concepts/foundations/requirement-conflicts-and-prioritization/) | COMPLETED | 4/5 |
 | 0 | [Latency, throughput, bandwidth, concurrency and tail latency](../concepts/foundations/latency-throughput-bandwidth-concurrency-tail-latency/) | COMPLETED | 4/5 |
-| 0 | Back-of-the-envelope capacity estimation | NOT STARTED | — |
+| 0 | Back-of-the-envelope capacity estimation | STARTED | — |
 | 0 | Availability, reliability, durability, resilience and fault domains | NOT STARTED | — |
 | 0 | SLIs, SLOs, SLAs and error budgets | NOT STARTED | — |
 | 0 | Networking/request lifecycle: DNS, HTTP, TCP, TLS, connections, timeouts | NOT STARTED | — |
